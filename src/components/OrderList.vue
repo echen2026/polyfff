@@ -10,6 +10,7 @@
           <button @click="setFilter('cash')" :class="{ active: currentFilter === 'cash' }">Cash</button>
           <button @click="setFilter('venmo')" :class="{ active: currentFilter === 'venmo' }">Venmo</button>
           <button @click="setFilter('prepaid')" :class="{ active: currentFilter === 'prepaid' }">Prepaid</button>
+          <button @click="setFilter('poly')" :class="{ active: currentFilter === 'poly' }">Poly</button>
           <button @click="setFilter('unpaid')" :class="{ active: currentFilter === 'unpaid' }">Unpaid</button>
           <button @click="setFilter('picked-up')" :class="{ active: currentFilter === 'picked-up' }">Picked Up</button>
           <button @click="setFilter('not-picked-up')" :class="{ active: currentFilter === 'not-picked-up' }">Not Picked Up</button>
@@ -24,6 +25,7 @@
                 <option value="Cash">Cash</option>
                 <option value="Venmo">Venmo</option>
                 <option value="Prepaid">Prepaid</option>
+                <option value="Poly">Poly</option>
                 <option value="Unpaid">Unpaid</option>
               </select>
               <button @click="togglePickup(order)" :class="{'checked-in': order.checkedIn}" class="pickup-toggle">
@@ -73,6 +75,7 @@ export default {
             case 'cash': return order.paymentMethod === 'Cash';
             case 'venmo': return order.paymentMethod === 'Venmo';
             case 'prepaid': return order.paymentMethod === 'Prepaid';
+            case 'poly': return order.paymentMethod === 'Poly';
             case 'unpaid': return order.paymentMethod === 'Unpaid';
             case 'picked-up': return order.checkedIn;
             case 'not-picked-up': return !order.checkedIn;

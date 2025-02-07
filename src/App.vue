@@ -11,12 +11,13 @@
     <OrderList v-if="currentComponent === 'orderList'" :orders="orders" @selectOrder="setSelectedOrder"/>
     <OrderDetail v-if="currentComponent === 'orderDetail'" :order="selectedOrder" @close="currentComponent = 'orderList'" @updateOrder="updateOrder"/>
     <Settings v-if="currentComponent === 'settings'"/>
-    <AddManualSale v-if="currentComponent === 'addSale'" @orderSubmitted="addOrder"/>
+    <AddManualSale v-if="currentComponent === 'addSale'" />
   </div>
 </template>
 
 <script>
 import store from './store';
+import emitter from './eventBus';
 import OrderList from './components/OrderList.vue';
 import Settings from './components/Settings.vue';
 import OrderDetail from './components/OrderDetail.vue';
@@ -43,6 +44,17 @@ export default {
   created() {
     store.loadData();
   },
+  mounted() {
+    // Register an event listener on the global event bus for 'addOrder',
+    // wrapping in try/catch to prevent unhandled errors during event execution.
+    emitter.on('addOrder', (order) => {
+      try {
+        this.addOrder(order);
+      } catch (error) {
+        console.error("Error processing addOrder event:", error);
+      }
+    });
+  },
   methods: {
     showComponent(component) {
       this.currentComponent = component;
@@ -60,9 +72,10 @@ export default {
       }
     },
     addOrder(order) {
-      order.id = Date.now(); // Assign a unique ID
+      order.id = Date.now(); // Assign a unique ID to the order.
       store.orders.push(order);
       store.saveData();
+      // Switch back to the home view.
       this.currentComponent = 'orderList';
     }
   }

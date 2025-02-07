@@ -19,7 +19,7 @@
           <div class="order-header">
             <div class="order-name">{{ order.firstName }} {{ order.lastName }}</div>
             <div class="order-controls">
-              <select v-model="order.paymentMethod" @change="updateOrder(order)" class="payment-select">
+              <select v-model="order.paymentMethod" @change="updateOrderWithPaymentMethod(order)" class="payment-select">
                 <option value="Cash">Cash</option>
                 <option value="Venmo">Venmo</option>
                 <option value="Unpaid">Unpaid</option>
@@ -93,6 +93,11 @@ export default {
     },
     togglePickup(order) {
       order.checkedIn = !order.checkedIn;
+      emitter.emit('updateOrder', order);
+    },
+    updateOrderWithPaymentMethod(order) {
+      // also set pickup status to to true
+      order.checkedIn = true;
       emitter.emit('updateOrder', order);
     },
     updateOrder(order) {

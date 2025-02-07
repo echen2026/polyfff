@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import emitter from '../eventBus';
+
 export default {
   props: ['orders'],
   data() {
@@ -91,10 +93,10 @@ export default {
     },
     togglePickup(order) {
       order.checkedIn = !order.checkedIn;
-      this.$emit('updateOrder', order);
+      emitter.emit('updateOrder', order);
     },
     updateOrder(order) {
-      this.$emit('updateOrder', order);
+      emitter.emit('updateOrder', order);
     },
     downloadCSV() {
         // Create CSV header

@@ -1,4 +1,1922 @@
 {
-  "orders": [],
-  "menuItems": []
+  "orders": [
+    {
+      "id": 1738924483529,
+      "firstName": "Isabella",
+      "lastName": "Asper de Tyson",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": true
+    },
+    {
+      "id": 1738924483530,
+      "firstName": "Eli",
+      "lastName": "Axel",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Cash",
+      "checkedIn": true
+    },
+    {
+      "id": 1738924483531,
+      "firstName": "Cashel",
+      "lastName": "Barnes",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Sweet Rice Roll",
+          "quantity": 1,
+          "price": 7
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483532,
+      "firstName": "Karen",
+      "lastName": "Barton",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483533,
+      "firstName": "Bridget",
+      "lastName": "Bickell",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483534,
+      "firstName": "Theo",
+      "lastName": "Bieltvedt",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483535,
+      "firstName": "Amber",
+      "lastName": "Bocquin",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483536,
+      "firstName": "Madeline",
+      "lastName": "Bray",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483537,
+      "firstName": "Jen",
+      "lastName": "Cardillo",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483538,
+      "firstName": "Chao",
+      "lastName": "Chao",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483540,
+      "firstName": "Ginny",
+      "lastName": "Cheung",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483541,
+      "firstName": "Kaitlyn",
+      "lastName": "Chiao",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483542,
+      "firstName": "Sophie",
+      "lastName": "Chiu",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483543,
+      "firstName": "Lois",
+      "lastName": "Chung",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 2,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483544,
+      "firstName": "Alyssa",
+      "lastName": "Cobian",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483545,
+      "firstName": "Brynn",
+      "lastName": "Connolly",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483546,
+      "firstName": "William",
+      "lastName": "Connolly",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483547,
+      "firstName": "Hadyn",
+      "lastName": "Cundieff",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483548,
+      "firstName": "Shawn",
+      "lastName": "Dahiyat",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 2,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483549,
+      "firstName": "ella",
+      "lastName": "dan",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483550,
+      "firstName": "Elsie",
+      "lastName": "Dang",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483552,
+      "firstName": "Annie",
+      "lastName": "Delbridge",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483553,
+      "firstName": "Arjun",
+      "lastName": "Dhadwal",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483554,
+      "firstName": "Naomi",
+      "lastName": "Diehl",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483555,
+      "firstName": "Ajani",
+      "lastName": "Durham",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483556,
+      "firstName": "Sabreen",
+      "lastName": "El-Amin",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Vegetarian Rice Roll",
+          "quantity": 1,
+          "price": 7
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483557,
+      "firstName": "Adam",
+      "lastName": "Feldmeth",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483558,
+      "firstName": "Thompson",
+      "lastName": "Finn",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483559,
+      "firstName": "Filiz",
+      "lastName": "Fish",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Sweet Rice Roll",
+          "quantity": 1,
+          "price": 7
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483560,
+      "firstName": "Sofia",
+      "lastName": "Flores-Castro",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483562,
+      "firstName": "Chloe",
+      "lastName": "Garcia-Duong",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483563,
+      "firstName": "Casey",
+      "lastName": "Gmelich",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483564,
+      "firstName": "Saya",
+      "lastName": "Gooden",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483565,
+      "firstName": "Eden",
+      "lastName": "Greene",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Vegetarian Rice Roll",
+          "quantity": 1,
+          "price": 7
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483566,
+      "firstName": "Iris",
+      "lastName": "Grether",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483567,
+      "firstName": "Maya",
+      "lastName": "Gulati",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483568,
+      "firstName": "Cavon",
+      "lastName": "Hajimiri",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483569,
+      "firstName": "Finn",
+      "lastName": "Hill",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483570,
+      "firstName": "Kelland",
+      "lastName": "Hong",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483571,
+      "firstName": "Lucas",
+      "lastName": "Hong",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483572,
+      "firstName": "Elizabeth",
+      "lastName": "Huang",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483573,
+      "firstName": "Justyce",
+      "lastName": "Icart",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483574,
+      "firstName": "Justyce",
+      "lastName": "Icart",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 2,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483575,
+      "firstName": "Daniel",
+      "lastName": "Ismagilov",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483576,
+      "firstName": "Max",
+      "lastName": "Ismagilov",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483577,
+      "firstName": "Hudson",
+      "lastName": "Jenq",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483579,
+      "firstName": "Parker",
+      "lastName": "Johnson",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483580,
+      "firstName": "Keira",
+      "lastName": "Kim",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483581,
+      "firstName": "Ryan",
+      "lastName": "Kim",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483582,
+      "firstName": "Sophie",
+      "lastName": "Kwei",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483583,
+      "firstName": "Chiang Zanoria",
+      "lastName": "Kyan",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483584,
+      "firstName": "Matilda",
+      "lastName": "Labrucherie",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483585,
+      "firstName": "Danny",
+      "lastName": "Lara",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483586,
+      "firstName": "Kalyx",
+      "lastName": "Lara",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483587,
+      "firstName": "Maxwell",
+      "lastName": "Leaks",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483588,
+      "firstName": "Justin",
+      "lastName": "Lee",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483589,
+      "firstName": "Karissa",
+      "lastName": "Lee",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483590,
+      "firstName": "Jack",
+      "lastName": "Leichter",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483591,
+      "firstName": "Oster Ketsios",
+      "lastName": "Leo",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483592,
+      "firstName": "Megan",
+      "lastName": "Lin",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483593,
+      "firstName": "Ryan",
+      "lastName": "Lin",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483594,
+      "firstName": "Vanessa",
+      "lastName": "Lin",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483595,
+      "firstName": "Audrey",
+      "lastName": "Ma",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483596,
+      "firstName": "Esa",
+      "lastName": "Martin",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483597,
+      "firstName": "Jorge",
+      "lastName": "Martinez",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483599,
+      "firstName": "Will",
+      "lastName": "Mason",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483600,
+      "firstName": "Terrance",
+      "lastName": "MCelrath",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483601,
+      "firstName": "Henry",
+      "lastName": "Miller",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483602,
+      "firstName": "Pergament",
+      "lastName": "Myles",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483603,
+      "firstName": "Yagura",
+      "lastName": "Nathan",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483604,
+      "firstName": "Michael",
+      "lastName": "Patzakis",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483605,
+      "firstName": "Isabel",
+      "lastName": "Perez",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483606,
+      "firstName": "Kalea",
+      "lastName": "Plotnick",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483607,
+      "firstName": "Melissa",
+      "lastName": "Ponce",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483608,
+      "firstName": "Noah",
+      "lastName": "Posin",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Sweet Rice Roll",
+          "quantity": 1,
+          "price": 7
+        },
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483609,
+      "firstName": "Dunham",
+      "lastName": "Rachel",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483610,
+      "firstName": "Justin",
+      "lastName": "Redick",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483611,
+      "firstName": "Jimmy",
+      "lastName": "Reynolds",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483612,
+      "firstName": "Diego",
+      "lastName": "Scholze",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 2,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483613,
+      "firstName": "Samantha",
+      "lastName": "Schreiber",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483614,
+      "firstName": "Amira",
+      "lastName": "Shamsi",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483615,
+      "firstName": "Amelia",
+      "lastName": "Shih",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483616,
+      "firstName": "Brandon",
+      "lastName": "Shin",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483617,
+      "firstName": "William",
+      "lastName": "Son",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483618,
+      "firstName": "Shayla",
+      "lastName": "Starr",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483619,
+      "firstName": "Sophie",
+      "lastName": "Tan",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483620,
+      "firstName": "Remick",
+      "lastName": "Techentin",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483621,
+      "firstName": "Ian",
+      "lastName": "Teigen",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483622,
+      "firstName": "Alex",
+      "lastName": "Teng",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483623,
+      "firstName": "Ava",
+      "lastName": "Teng",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483624,
+      "firstName": "Kaiden",
+      "lastName": "Thorell",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483625,
+      "firstName": "Matthew",
+      "lastName": "Tomlin",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Sweet Rice Roll",
+          "quantity": 1,
+          "price": 7
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483626,
+      "firstName": "Kyanh",
+      "lastName": "Tonnu",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483627,
+      "firstName": "Resendiz",
+      "lastName": "Uriel",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 2,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483628,
+      "firstName": "Mariel",
+      "lastName": "Vargas-VonBreymann",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483629,
+      "firstName": "Caralee",
+      "lastName": "Wang",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483630,
+      "firstName": "Conner",
+      "lastName": "Wang",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483631,
+      "firstName": "Anara",
+      "lastName": "Williams",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483632,
+      "firstName": "Apollo",
+      "lastName": "Wong",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        },
+        {
+          "name": "Popcorn Chicken",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483633,
+      "firstName": "Edge",
+      "lastName": "Woodruff",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "name": "Chinese Donut",
+          "quantity": 1,
+          "price": 4
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483634,
+      "firstName": "Michelle",
+      "lastName": "Xu",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483635,
+      "firstName": "Hudson",
+      "lastName": "Yen",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483636,
+      "firstName": "Jessica",
+      "lastName": "Yip",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483637,
+      "firstName": "Taylor",
+      "lastName": "Yong",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Sausage Rice roll",
+          "quantity": 1,
+          "price": 8.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483638,
+      "firstName": "Marcel",
+      "lastName": "Zamora",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        },
+        {
+          "name": "Egg Omelet",
+          "quantity": 1,
+          "price": 7.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483639,
+      "firstName": "Olivia",
+      "lastName": "Zee",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Smoked chicken rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483640,
+      "firstName": "Simon",
+      "lastName": "Zernicki-Glover",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483641,
+      "firstName": "Aliya",
+      "lastName": "Zhou",
+      "grade": "12",
+      "items": [
+        {
+          "name": "Taiwanese sausage rice plate",
+          "quantity": 1,
+          "price": 13.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483642,
+      "firstName": "Melanie",
+      "lastName": "Zhou",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    },
+    {
+      "id": 1738924483644,
+      "firstName": "Karina",
+      "lastName": "Kim",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Beef Rice Roll",
+          "quantity": 1,
+          "price": 9.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false
+    }
+  ],
+  "menuItems": [
+    {
+      "name": "Taiwanese sausage rice plate",
+      "price": 13.5
+    },
+    {
+      "name": "Smoked chicken rice plate",
+      "price": 13.5
+    },
+    {
+      "name": "Sausage Rice roll",
+      "price": 8.5
+    },
+    {
+      "name": "Beef Rice Roll",
+      "price": 9.5
+    },
+    {
+      "name": "Vegetarian Rice Roll",
+      "price": 7
+    },
+    {
+      "name": "Sweet Rice Roll",
+      "price": 7
+    },
+    {
+      "name": "Egg Omelet",
+      "price": 7.5
+    },
+    {
+      "name": "Popcorn Chicken",
+      "price": 7.5
+    },
+    {
+      "name": "Chinese Donut",
+      "price": 4
+    }
+  ]
 }

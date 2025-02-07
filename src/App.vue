@@ -18,8 +18,8 @@
 <script>
 import store from './store';
 import OrderList from './components/OrderList.vue';
-import OrderDetail from './components/OrderDetail.vue';
 import Settings from './components/Settings.vue';
+import OrderDetail from './components/OrderDetail.vue';
 import AddManualSale from './components/AddManualSale.vue';
 
 export default {
@@ -52,6 +52,7 @@ export default {
       this.currentComponent = 'orderDetail';
     },
     updateOrder(updatedOrder) {
+      console.log("updatedOrder", updatedOrder);
       const index = store.orders.findIndex(o => o.id === updatedOrder.id);
       if (index !== -1) {
         store.orders.splice(index, 1, updatedOrder);

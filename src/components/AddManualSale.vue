@@ -1,4 +1,3 @@
-
 <template>
   <div class="add-sale">
     <h2>Add Manual Sale</h2>
@@ -37,6 +36,8 @@
 </template>
 
 <script>
+import emitter from '../eventBus'
+
 export default {
   data() {
     return {
@@ -99,7 +100,8 @@ export default {
         paymentMethod: this.paymentMethod,
         checkedIn: this.checkedIn,
       };
-      this.$emit('orderSubmitted', order);
+      emitter.emit('addOrder', order);
+      this.$emit('close');
     }
   }
 };

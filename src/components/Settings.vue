@@ -99,6 +99,7 @@ export default {
         
         if (order.items.length > 0) {
           orders.push(order);
+          console.log("order", order);
         }
       }
       

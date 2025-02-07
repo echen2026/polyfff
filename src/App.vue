@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import store from './store';
 import OrderList from './components/OrderList.vue';
 import OrderDetail from './components/OrderDetail.vue';
 import Settings from './components/Settings.vue';
@@ -31,9 +32,16 @@ export default {
   data() {
     return {
       currentComponent: 'orderList',
-      orders: [],
       selectedOrder: null,
     };
+  },
+  computed: {
+    orders() {
+      return store.orders;
+    }
+  },
+  created() {
+    store.loadData();
   },
   methods: {
     showComponent(component) {
@@ -44,15 +52,17 @@ export default {
       this.currentComponent = 'orderDetail';
     },
     updateOrder(updatedOrder) {
-      const index = this.orders.findIndex(o => o.id === updatedOrder.id);
+      const index = store.orders.findIndex(o => o.id === updatedOrder.id);
       if (index !== -1) {
-        this.orders.splice(index, 1, updatedOrder);
+        store.orders.splice(index, 1, updatedOrder);
+        store.saveData();
       }
     },
     addOrder(order) {
       order.id = Date.now(); // Assign a unique ID
-      this.orders.push(order);
-      this.currentComponent = 'orderList'; // Go back to Order List after adding
+      store.orders.push(order);
+      store.saveData();
+      this.currentComponent = 'orderList';
     }
   }
 };

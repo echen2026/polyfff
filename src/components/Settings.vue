@@ -27,24 +27,43 @@
 import store from '../store';
 
 export default {
-  data() {
-    return {
-      menuItems: []
+  computed: {
+    // Bind menuItems to the store. This computed property will update as the store changes.
+    menuItems: {
+      get() {
+        // Return the API-loaded (or default) menu items from the store.
+        return store.menuItems || [];
+      },
+      set(newMenuItems) {
+        // When the UI changes, update the store as well as persist the localStorage.
+        store.menuItems = newMenuItems;
+        localStorage.setItem('menuItems', JSON.stringify(newMenuItems));
+      }
     }
   },
   mounted() {
-    // Load saved menu items from localStorage or use defaults.
+    // Check if localStorage has menu items. If not, the API should update the store later.
     const savedItems = localStorage.getItem('menuItems');
-    this.menuItems = savedItems
-      ? JSON.parse(savedItems)
-      : [
-          { name: 'Cheeseburger', price: 6 },
-          { name: 'Fries', price: 3 }
-        ];
-    // Optionally update store menuItems so that changes propagate.
-    store.menuItems = this.menuItems;
+    if (savedItems) {
+      store.menuItems = JSON.parse(savedItems);
+    }
+    // Optionally, trigger an API call here that updates store.menuItems.
+    // Example:
+    // this.fetchMenuItemsFromAPI();
   },
   methods: {
+    // If needed, you can add a method to fetch the menu items from your API.
+    async fetchMenuItemsFromAPI() {
+      try {
+        const response = await fetch('/api/menu-items');
+        const apiMenuItems = await response.json();
+        if (Array.isArray(apiMenuItems)) {
+          this.menuItems = apiMenuItems;  // This will update the computed setter.
+        }
+      } catch (error) {
+        console.error('Failed to load menu items from API:', error);
+      }
+    },
     triggerFileInput() {
       this.$refs.fileInput.click();
     },

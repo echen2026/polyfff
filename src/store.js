@@ -94,14 +94,12 @@ const store = reactive({
   },
 
   toggleOrderProperty(orderId, property) {
-    const order = this.orders.find(o => o.id === orderId);
-    if (order) {
-      // Create a new order object with the toggled property
-      const updatedOrder = {
-        ...order,
-        [property]: !order[property]
-      };
-      this.updateOrder(updatedOrder);
+    const orderIndex = this.orders.findIndex(o => o.id === orderId);
+    if (orderIndex !== -1) {
+      // Directly update the reactive property on this order
+      this.orders[orderIndex][property] = !this.orders[orderIndex][property];
+      this.saveToLocalStorage();
+      socket.emit('orderUpdated', this.orders[orderIndex]);
     }
   }
 });

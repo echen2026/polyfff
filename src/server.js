@@ -14,6 +14,7 @@ app.use(express.json());
 
 // File path to store persistent data
 const dataPath = path.join(__dirname, 'data.json');
+console.log("DEBUG: Data file path is:", dataPath, "and __dirname is:", __dirname);
 
 // Global data store that will be shared by all sockets
 let data = {
@@ -22,14 +23,21 @@ let data = {
   students: []
 };
 
-// Load persistent data from file, or initialize with default data if the file doesn't exist.
+// Updated loadData function with empty file check
 async function loadData() {
+  console.log("DEBUG: Attempting to load data from", dataPath);
   try {
     const fileContent = await fs.readFile(dataPath, 'utf8');
+    console.log("DEBUG: Raw file content:", fileContent);
+    // If fileContent is empty, throw an error to trigger default data
+    if (!fileContent.trim()) {
+      throw new Error("JSON file is empty");
+    }
     data = JSON.parse(fileContent);
-    console.log('Data loaded:', data);
+    console.log('DEBUG: Data loaded successfully:', data);
   } catch (error) {
-    console.log('Data file not found or invalid. Using default data.');
+    console.error("DEBUG: Error reading data file:", error);
+    console.log('DEBUG: Data file not found or invalid. Using default data.');
     data = {
       orders: [],
       menuItems: [],
@@ -39,13 +47,14 @@ async function loadData() {
   }
 }
 
-// Save current data to file
+// Updated saveData function remains the same
 async function saveData() {
+  console.log("DEBUG: Saving data to", dataPath, "with content:", JSON.stringify(data, null, 2));
   try {
     await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
-    console.log('Data saved to file.');
+    console.log('DEBUG: Data saved to file successfully.');
   } catch (error) {
-    console.error('Error saving data:', error);
+    console.error('DEBUG: Error saving data:', error);
   }
 }
 
@@ -55,13 +64,18 @@ loadData();
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../dist')));
 
-// API endpoint to get the persisted data
+// Updated API endpoint to get the persisted data
 app.get('/api/data', (req, res) => {
+  // Safety check: if data is not valid, set it to defaults before sending
+  if (!data || !data.orders) {
+    data = { orders: [], menuItems: [], students: [] };
+  }
   res.json(data);
 });
 
 // API endpoint to update and persist data
 app.post('/api/data', (req, res) => {
+  console.log("DEBUG: API POST /api/data called with body:", req.body);
   const newData = req.body;
   data = { ...data, ...newData };
   saveData();

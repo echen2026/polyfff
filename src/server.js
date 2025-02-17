@@ -7,10 +7,11 @@ const { Server } = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 
+// Set a higher limit for JSON payloads
+app.use(express.json({ limit: '10mb' })); // Adjust the limit as needed
+
 // Initialize Socket.IO and attach it to the server
 const io = new Server(server);
-
-app.use(express.json());
 
 // Use a single file for persistent data.
 const dataPath = path.join(__dirname, 'data.json');
@@ -40,19 +41,54 @@ async function loadDataFromFiles() {
     data = {
       orders: [],
       menuItems: [],
-      students: []
+      students: []  // Initially empty students array
     };
     await saveDataToFiles(); // Create the data.json file with default data.
   }
+
+  // NEW: If students array is empty, load student data from result.json.
+  if (!data.students || data.students.length === 0) {
+    console.log('DEBUG: Students data is empty, attempting to load from result.json');
+    try {
+      const studentContent = await fs.readFile(path.join(__dirname, 'result.json'), 'utf8');
+      const studentData = JSON.parse(studentContent);
+      
+      // Check if studentData is an object and convert it to an array
+      if (typeof studentData === 'object' && !Array.isArray(studentData)) {
+        data.students = [studentData]; // Wrap the object in an array
+      } else {
+        data.students = studentData; // Assume it's already an array
+      }
+      
+      console.log('DEBUG: Students data loaded from result.json:', data.students.length, 'students found');
+    } catch (err) {
+      console.error('DEBUG: Error loading students from result.json:', err);
+      data.students = [];
+    }
+    await saveDataToFiles(); // Save the updated data with students included.
+  }
+
+  // Load students
+  const studentsData = await fs.readFile('result.json', 'utf8');
+  const studentData = JSON.parse(studentsData);
+  
+  // Check if studentData is an object and convert it to an array
+  if (typeof studentData === 'object' && !Array.isArray(studentData)) {
+    data.students = [studentData]; // Wrap the object in an array
+  } else {
+    data.students = studentData; // Assume it's already an array
+  }
+  
+  console.log('DEBUG: Students loaded:', data.students);
 }
 
 async function saveDataToFiles() {
-  console.log("DEBUG: Saving data to", dataPath, "with content:", JSON.stringify(data, null, 2));
   try {
+    console.log("DEBUG: Saving data to file:", data);
     await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
-    console.log('DEBUG: Data saved to data.json successfully.');
+    console.log("DEBUG: Data saved to file:", dataPath);
   } catch (error) {
-    console.error('DEBUG: Error saving data to data.json:', error);
+    console.error("DEBUG: Error saving data to file:", error);
   }
 }
 
@@ -87,9 +123,15 @@ app.get('/api/data', (req, res) => {
 app.post('/api/data', async (req, res) => {
   console.log("DEBUG: API POST /api/data called with body:", req.body);
   const newData = req.body;
-  data = { ...data, ...newData };
+
+  // Update the data object with new data
+  data.orders = newData.orders;
+  data.menuItems = newData.menuItems;
+  data.students = newData.students;
+
+  // Save the updated data to the file
   await saveDataToFiles();
-  io.emit('dataUpdated', data);
+  io.emit('dataUpdated', data); // Notify all clients of the data update
   res.status(200).send('Data saved successfully');
 });
 

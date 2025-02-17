@@ -26,6 +26,13 @@ const store = reactive({
       const serverData = await response.json();
       console.log('Data loaded from server:', serverData);
 
+      // Check if students are present in the response
+      if (serverData.students && serverData.students.length > 0) {
+        console.log('Students loaded:', serverData.students);
+      } else {
+        console.log('No students found in server data.');
+      }
+
       // Always override the local store with the server data.
       this.orders = serverData.orders;
       this.menuItems = serverData.menuItems;
@@ -107,8 +114,33 @@ const store = reactive({
     }
   },
 
-  saveData() {
+  async saveData() {
+    // Save to localStorage as before.
     this.saveToLocalStorage();
+    
+    // Log the size of the data being sent
+    const payload = {
+      orders: this.orders,
+      menuItems: this.menuItems,
+      students: this.students
+    };
+    console.log("Payload size:", JSON.stringify(payload).length); // Log the size of the payload
+    
+    // Now also persist to the backend via a POST request.
+    try {
+      const response = await fetch('/api/data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) {
+        console.error("Failed to persist data to server, status:", response.status);
+      }
+    } catch (error) {
+      console.error("Error saving data to server:", error);
+    }
   }
 });
 

@@ -43,45 +43,51 @@ export default {
     if (savedItems) {
       store.menuItems = JSON.parse(savedItems);
     }
+    store.loadData().then(() => {
+      console.log('Students loaded:', store.students);
+    });
   },
   methods: {
     triggerFileInput() {
+      console.log("File input triggered");
       this.$refs.fileInput.click();
     },
     async handleFileUpload(event) {
       const file = event.target.files[0];
+      console.log("Selected file:", file);
       if (!file) return;
       
       const text = await file.text();
+      console.log("File content:", text);
       const rows = text.split('\n').map(row => row.split(','));
+      console.log("Parsed rows:", rows);
       const headers = rows[0];
 
-      // Process headers to extract menu items with their prices.
-      const menuItems = [];
-      for (let i = 0; i < headers.length; i++) {
-        if (headers[i + 1] && !isNaN(headers[i + 1])) {
-          menuItems.push({
-            name: headers[i].trim(),
-            price: parseFloat(headers[i + 1])
-          });
-          i++; // Skip the price column.
-        }
+      // Ensure students are loaded before processing the CSV
+      await store.loadData(); // Wait for students to load
+      console.log('Students loaded after file upload:', store.students);
+
+      if (store.students.length === 0) {
+        console.log("No students available for matching. Skipping order processing.");
+        return; // or handle accordingly
       }
-      
-      // Update menu items in local state, localStorage, and the central store.
-      this.menuItems = menuItems;
-      localStorage.setItem('menuItems', JSON.stringify(menuItems));
-      store.menuItems = menuItems;
-      
-      // Process orders from CSV.
-      const orders = [];
+
+      const orders = []; // Initialize orders array
       for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
-        if (row.length < 5) continue;
-        
+        console.log(`Processing row: ${row}`); // Log the current row being processed
+        if (row.length < 5) {
+          console.log("Row is too short, skipping:", row); // Log if the row is too short
+          continue;
+        }
+
+        console.log("Number of students:", store.students.length); // Log the number of students
+        console.log("Students array:", store.students); // Log the students array
+        console.log("First Name:", row[3].trim(), "Last Name:", row[2].trim()); // Log the input names
+        const studentId = findStudentId(row[3].trim(), row[2].trim(), store.students); // Get student ID
         const order = {
-          id: Date.now() + i,
-          orderId: findStudentId(row[3].trim(), row[2].trim(), store.students),
+          id: Date.now() + i, // Consider using a more consistent ID generation method
+          orderId: studentId, // Link orderId to the student ID
           firstName: row[3].trim(),
           lastName: row[2].trim(),
           grade: row[4].trim(),
@@ -89,13 +95,13 @@ export default {
           paymentMethod: 'Unpaid',
           checkedIn: false
         };
-        
+
         // Process items starting from the 7th column.
         let currentIndex = 6;
         while (currentIndex < row.length) {
           const quantity = parseInt(row[currentIndex]);
           if (!isNaN(quantity) && quantity > 0) {
-            const menuItem = menuItems[(currentIndex - 6) / 2];
+            const menuItem = this.menuItems[(currentIndex - 6) / 2];
             if (menuItem) {
               order.items.push({
                 name: menuItem.name,
@@ -115,7 +121,7 @@ export default {
       
       // Update the central store's orders and persist the changes.
       store.orders = orders;
-      store.saveData();
+      await store.saveData(); // Ensure data is saved after import
     },
     downloadCSV() {
       // Get menu item names for headers
@@ -196,10 +202,9 @@ export default {
 };
 
 function findStudentId(firstName, lastName, students) {
-  // Ensure students is an array so that .find can be called safely.
-  students = students || [];
+  console.log("findStudentId called with:", firstName, lastName); // Log the parameters
+  students = students || []; // Ensure students is an array
   
-  // Remove all punctuation and extra spaces
   const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim();
   const cleanFirstName = cleanName(firstName);
   const cleanLastName = cleanName(lastName);
@@ -207,38 +212,17 @@ function findStudentId(firstName, lastName, students) {
   console.log(`Looking for match for: ${cleanFirstName} ${cleanLastName}`);
 
   const student = students.find(s => {
+    console.log("Checking student:", s); // Log the current student being checked
     const studentFirstName = cleanName(s.first_name);
     const studentNickname = cleanName(s.nickname);
     const studentLastName = cleanName(s.last_name);
     
-    // Split names in case of multiple parts
-    const inputFirstParts = cleanFirstName.split(' ');
-    const inputLastParts = cleanLastName.split(' ');
-    const firstParts = studentFirstName.split(' ');
-    const lastParts = studentLastName.split(' ');
-    const nickParts = studentNickname.split(' ');
+    console.log(`Comparing with: ${studentFirstName} ${studentLastName} (Nickname: ${studentNickname})`);
 
-    // Join all parts of last name to handle hyphenated names
-    const fullLastName = lastParts.join('');
-    const fullInputLastName = inputLastParts.join('');
-
-    // Try normal order
-    const normalOrderMatch = (
-      // Input first name matches first name or nickname
-      (inputFirstParts.some(part => firstParts.includes(part) || nickParts.includes(part))) &&
-      // Last name matches last name (either with spaces or without)
-      (inputLastParts.join(' ') === lastParts.join(' ') || fullInputLastName === fullLastName)
-    );
-
-    // Try reversed order
-    const reversedOrderMatch = (
-      // Input first name matches last name
-      (inputFirstParts.join(' ') === lastParts.join(' ') || inputFirstParts.join('') === fullLastName) &&
-      // Input last name matches first name or nickname
-      (inputLastParts.some(part => firstParts.includes(part) || nickParts.includes(part)))
-    );
-
-    if (normalOrderMatch || reversedOrderMatch) {
+    const isMatch = (studentFirstName === cleanFirstName && studentLastName === cleanLastName) ||
+                    (studentNickname === cleanFirstName && studentLastName === cleanLastName);
+    
+    if (isMatch) {
       console.log(`Found match: ${studentFirstName}/${studentNickname} ${studentLastName}`);
       return true;
     }

@@ -118,34 +118,49 @@ export default {
       store.saveData();
     },
     downloadCSV() {
-      const headers = ['First Name', 'Last Name', 'Payment Status', 'Pickup Status', 'Grade'];
+      // Get menu item names for headers
       const menuNames = this.menuItems.map(item => item.name);
-      headers.push(...menuNames, 'Total Cost');
+      
+      // Create headers with total cost before menu items
+      const headers = [
+        'First Name',
+        'Last Name',
+        'Grade',
+        'Total Cost',
+        'Picked Up',
+        'Poly',
+        'Prepaid',
+        'Venmo'
+      ];
+      headers.push(...menuNames);
       
       let csvContent = headers.join(',') + '\n';
       
       store.orders.forEach(order => {
+        // Calculate total cost first
+        const total = order.items.reduce((sum, item) => {
+          const menuItem = this.menuItems.find(m => m.name === item.name);
+          return sum + (menuItem ? menuItem.price * item.quantity : 0);
+        }, 0);
+
+        // Create base row data with toggles
         const row = [
           order.firstName,
           order.lastName,
-          order.paymentMethod,
-          order.checkedIn ? 'Picked Up' : 'Not Picked Up',
-          order.grade
+          order.grade,
+          total.toFixed(2),
+          order.checkedIn ? 'Yes' : 'No',
+          order.isPoly ? 'Yes' : 'No',
+          order.prepaid ? 'Yes' : 'No',
+          order.venmo ? 'Yes' : 'No'
         ];
         
-        // For each menu item, add the corresponding quantity.
+        // Add quantities for each menu item
         this.menuItems.forEach(menuItem => {
           const orderItem = order.items.find(item => item.name === menuItem.name);
           row.push(orderItem ? orderItem.quantity : '0');
         });
         
-        // Calculate the total cost.
-        const total = order.items.reduce((sum, item) => {
-          const mi = this.menuItems.find(m => m.name === item.name);
-          return sum + (mi ? mi.price * item.quantity : 0);
-        }, 0);
-        
-        row.push(total.toFixed(2));
         csvContent += row.join(',') + '\n';
       });
       

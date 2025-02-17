@@ -110,61 +110,67 @@ export default {
       emitter.emit('updateOrder', order);
     },
     downloadCSV() {
-        // Create CSV header
-        const headers = ['First Name', 'Last Name', 'Payment Status', 'Pickup Status', 'Grade'];
-        
-        // Get all unique food items from orders
-        const foodItems = new Set();
-        this.orders.forEach(order => {
-          Object.keys(order.items || {}).forEach(item => foodItems.add(item));
+      // Get all unique menu items from orders
+      const menuItems = new Set();
+      this.orders.forEach(order => {
+        order.items.forEach(item => menuItems.add(item.name));
+      });
+
+      // Create headers array with fixed columns first, then menu items
+      const headers = [
+        'First Name',
+        'Last Name', 
+        'Grade',
+        'Total',
+        'Picked Up',
+        'Poly',
+        'Prepaid',
+        'Venmo',
+        ...Array.from(menuItems)
+      ];
+
+      // Create CSV content starting with headers
+      let csvContent = headers.join(',') + '\n';
+
+      // Add each order as a row
+      this.orders.forEach(order => {
+        // Calculate total
+        const total = order.items.reduce((sum, item) => 
+          sum + (item.price * item.quantity), 0
+        );
+
+        // Create base row data
+        const row = [
+          order.firstName,
+          order.lastName,
+          order.grade,
+          total.toFixed(2),
+          order.checkedIn ? 'Yes' : 'No',
+          order.isPoly ? 'Yes' : 'No',
+          order.prepaid ? 'Yes' : 'No',
+          order.venmo ? 'Yes' : 'No'
+        ];
+
+        // Add quantities for each menu item
+        menuItems.forEach(menuItem => {
+          const orderItem = order.items.find(item => item.name === menuItem);
+          row.push(orderItem ? orderItem.quantity : '0');
         });
-        
-        // Add food items and total to headers
-        [...foodItems].forEach(item => headers.push(item));
-        headers.push('Total Cost', 'Venmo Amount', 'Cash Amount');
-        
-        // Create CSV content
-        let csvContent = headers.join(',') + '\n';
-        
-        this.orders.forEach(order => {
-          const row = [
-            order.firstName,
-            order.lastName,
-            order.paymentMethod,
-            order.checkedIn ? 'Picked Up' : 'Not Picked Up',
-            order.grade
-          ];
-          
-          // Add quantities for each food item
-          [...foodItems].forEach(item => {
-            row.push(order.items?.[item] || '0');
-          });
-          
-          // Calculate and add total
-          const total = order.items.reduce((sum, item) => {
-            return sum + (item.price * item.quantity);
-          }, 0);
-          row.push(total.toFixed(2));
-          
-          // Add payment amounts
-          const venmoAmount = order.paymentMethod === 'Venmo' ? total : 0;
-          const cashAmount = order.paymentMethod === 'Cash' ? total : 0;
-          row.push(venmoAmount.toFixed(2), cashAmount.toFixed(2));
-          
-          csvContent += row.join(',') + '\n';
-        });
-        
-        // Create and download the file
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', 'orders.csv');
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
+
+        csvContent += row.join(',') + '\n';
+      });
+
+      // Create and download the file
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'orders.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   }
 };
 </script>

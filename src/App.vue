@@ -6,7 +6,6 @@
         <button @click="showComponent('orderList')" :class="{ active: currentComponent === 'orderList' }">Home</button>
         <button @click="showComponent('settings')" :class="{ active: currentComponent === 'settings' }">Settings</button>
         <button @click="showComponent('addSale')" :class="{ active: currentComponent === 'addSale' }">Add Manual Sale</button>
-        <button @click="downloadCSV" class="download-btn">Download CSV</button>
       </nav>
     </header>
 
@@ -201,9 +200,6 @@ pickedUpCount(): number {
       store.orders.push(order)
       store.saveData()
       this.currentComponent = 'orderList'
-    },
-    downloadCSV() {
-      store.downloadCSV()
     },
     handleBarcodeInput(event: KeyboardEvent) {
       const currentTime = Date.now()

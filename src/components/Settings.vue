@@ -28,42 +28,23 @@ import store from '../store';
 
 export default {
   computed: {
-    // Bind menuItems to the store. This computed property will update as the store changes.
     menuItems: {
       get() {
-        // Return the API-loaded (or default) menu items from the store.
         return store.menuItems || [];
       },
       set(newMenuItems) {
-        // When the UI changes, update the store as well as persist the localStorage.
         store.menuItems = newMenuItems;
         localStorage.setItem('menuItems', JSON.stringify(newMenuItems));
       }
     }
   },
   mounted() {
-    // Check if localStorage has menu items. If not, the API should update the store later.
     const savedItems = localStorage.getItem('menuItems');
     if (savedItems) {
       store.menuItems = JSON.parse(savedItems);
     }
-    // Optionally, trigger an API call here that updates store.menuItems.
-    // Example:
-    // this.fetchMenuItemsFromAPI();
   },
   methods: {
-    // If needed, you can add a method to fetch the menu items from your API.
-    async fetchMenuItemsFromAPI() {
-      try {
-        const response = await fetch('/api/menu-items');
-        const apiMenuItems = await response.json();
-        if (Array.isArray(apiMenuItems)) {
-          this.menuItems = apiMenuItems;  // This will update the computed setter.
-        }
-      } catch (error) {
-        console.error('Failed to load menu items from API:', error);
-      }
-    },
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
@@ -100,6 +81,7 @@ export default {
         
         const order = {
           id: Date.now() + i,
+          orderId: findStudentId(row[3].trim(), row[2].trim(), store.students),
           firstName: row[3].trim(),
           lastName: row[2].trim(),
           grade: row[4].trim(),
@@ -193,4 +175,18 @@ export default {
     }
   }
 };
+
+function findStudentId(firstName, lastName, students) {
+  // Remove extra spaces, punctuation and make case insensitive
+  const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim();
+  const cleanFirstName = cleanName(firstName);
+  const cleanLastName = cleanName(lastName);
+  
+  const student = students.find(s => 
+    cleanName(s.first_name) === cleanFirstName && 
+    cleanName(s.last_name) === cleanLastName
+  );
+  
+  return student ? student.id.toString() : 'unknown';
+}
 </script>

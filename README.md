@@ -1,6 +1,6 @@
-# PolyFFF - Poly Food Fair Fundraiser 🍱
+# PolyFFF
 
-A modern web application designed to streamline the management of food fair orders at Polytechnic School.
+A modern web application designed to streamline the management of Fun Food Friday at Polytechnic School.
 
 ## 🌟 Features
 
@@ -54,7 +54,7 @@ A modern web application designed to streamline the management of food fair orde
 ## 💡 Tips & Tricks
 
 - **Student Matching**: The system automatically matches student names, even with:
-  - Nicknames (e.g., "Bob" for "Robert")
+  - Nicknames in the system (e.g., "Bob" for "Robert")
   - Reversed name order
   - Hyphenated names
   - Common misspellings
@@ -68,3 +68,7 @@ A modern web application designed to streamline the management of food fair orde
 - All data is stored locally in the browser
 - No sensitive information is transmitted to external servers
 - Regular backups are recommended using the export feature
+
+## ⚙️ License
+
+This project is licensed under the "you are not allowed to use, deploy, or read this unless expressly granted permission by Jeremy or Evan" license.

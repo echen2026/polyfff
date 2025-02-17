@@ -1,6 +1,6 @@
 # PolyFFF
 
-A modern web application designed to streamline the management of Fun Food Friday at Polytechnic School.
+A modern web application designed to streamline the management of Fun Food Friday.
 
 ## 🌟 Features
 

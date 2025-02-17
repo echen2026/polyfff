@@ -55,22 +55,40 @@ io.on('connection', (socket) => {
   socket.on('updateData', (newData) => {
     data.orders = newData.orders;
     data.menuItems = newData.menuItems;
-    // Broadcast to all other clients
-    socket.broadcast.emit('dataUpdated', data);
+    // Broadcast to ALL clients including sender
+    io.emit('dataUpdated', data);
     // Save to persistent storage
     saveData();
   });
 
   socket.on('orderAdded', (order) => {
-    socket.broadcast.emit('orderAdded', order);
+    // Add order to server data
+    data.orders.push(order);
+    // Broadcast to ALL clients
+    io.emit('orderAdded', order);
+    saveData();
   });
 
-  socket.on('orderUpdated', (order) => {
-    socket.broadcast.emit('orderUpdated', order);
+  socket.on('orderUpdated', (updatedOrder) => {
+    // Update order in server data
+    const index = data.orders.findIndex(o => o.id === updatedOrder.id);
+    if (index !== -1) {
+      data.orders[index] = updatedOrder;
+    }
+    // Broadcast to ALL clients
+    io.emit('orderUpdated', updatedOrder);
+    saveData();
   });
 
   socket.on('orderDeleted', (orderId) => {
-    socket.broadcast.emit('orderDeleted', orderId);
+    // Delete order from server data
+    const index = data.orders.findIndex(o => o.id === orderId);
+    if (index !== -1) {
+      data.orders.splice(index, 1);
+    }
+    // Broadcast to ALL clients
+    io.emit('orderDeleted', orderId);
+    saveData();
   });
 });
 

@@ -17,7 +17,7 @@ const store = reactive({
 
   async loadData() {
     try {
-      // Initial data load from server instead of localStorage
+      // Initial data load from server
       const response = await fetch('/api/data');
       const data = await response.json();
       this.orders = data.orders;
@@ -46,12 +46,10 @@ const store = reactive({
     });
   },
 
-  // Modify existing methods to emit changes
   updateOrder(updatedOrder) {
     const index = this.orders.findIndex(o => o.id === updatedOrder.id);
     if (index !== -1) {
       this.orders[index] = updatedOrder;
-      this.saveData();
       socket.emit('orderUpdated', updatedOrder);
     }
   },
@@ -183,7 +181,6 @@ const store = reactive({
     const index = this.orders.findIndex(order => order.id === orderId);
     if (index !== -1) {
       this.orders.splice(index, 1);
-      this.saveData();
       socket.emit('orderDeleted', orderId);
     }
   },
@@ -192,39 +189,37 @@ const store = reactive({
     const order = this.orders.find(o => o.id === orderId);
     if (order) {
       order[property] = !order[property];
-      this.saveData();
       socket.emit('orderUpdated', order);
     }
   },
 
   addOrder(order) {
     this.orders.push(order);
-    this.saveData();
     socket.emit('orderAdded', order);
   }
 });
 
-// Socket event listeners for real-time updates
+// Socket event listeners
 socket.on('connect', () => {
   console.log('Connected to server');
   store.loadData(); // Reload data when reconnected
 });
 
 socket.on('dataUpdated', (data) => {
+  console.log('Received data update:', data);
   store.orders = data.orders;
   store.menuItems = data.menuItems;
-  // Update localStorage as backup
-  localStorage.setItem('orders', JSON.stringify(data.orders));
-  localStorage.setItem('menuItems', JSON.stringify(data.menuItems));
 });
 
 socket.on('orderAdded', (order) => {
+  console.log('Received new order:', order);
   if (!store.orders.find(o => o.id === order.id)) {
     store.orders.push(order);
   }
 });
 
 socket.on('orderUpdated', (updatedOrder) => {
+  console.log('Received order update:', updatedOrder);
   const index = store.orders.findIndex(o => o.id === updatedOrder.id);
   if (index !== -1) {
     store.orders[index] = updatedOrder;
@@ -232,6 +227,7 @@ socket.on('orderUpdated', (updatedOrder) => {
 });
 
 socket.on('orderDeleted', (orderId) => {
+  console.log('Received order deletion:', orderId);
   const index = store.orders.findIndex(o => o.id === orderId);
   if (index !== -1) {
     store.orders.splice(index, 1);

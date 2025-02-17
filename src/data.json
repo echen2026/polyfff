@@ -18,7 +18,7 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": true
     },
     {
       "id": 1738948483372,

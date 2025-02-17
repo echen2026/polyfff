@@ -12,61 +12,71 @@ const io = new Server(server);
 
 app.use(express.json());
 
-// File path to store persistent data
+// Use a single file for persistent data.
 const dataPath = path.join(__dirname, 'data.json');
 console.log("DEBUG: Data file path is:", dataPath, "and __dirname is:", __dirname);
 
-// Global data store that will be shared by all sockets
 let data = {
   orders: [],
   menuItems: [],
   students: []
 };
 
-// Updated loadData function with empty file check
-async function loadData() {
+async function loadDataFromFiles() {
   console.log("DEBUG: Attempting to load data from", dataPath);
   try {
     const fileContent = await fs.readFile(dataPath, 'utf8');
     console.log("DEBUG: Raw file content:", fileContent);
-    // If fileContent is empty, throw an error to trigger default data
+
+    // If fileContent is empty, throw an error to trigger default data.
     if (!fileContent.trim()) {
-      throw new Error("JSON file is empty");
+      throw new Error("data.json is empty");
     }
     data = JSON.parse(fileContent);
-    console.log('DEBUG: Data loaded successfully:', data);
+    console.log('DEBUG: Data loaded successfully from data.json:', data);
   } catch (error) {
-    console.error("DEBUG: Error reading data file:", error);
-    console.log('DEBUG: Data file not found or invalid. Using default data.');
+    console.error("DEBUG: Error reading data.json:", error);
+    console.log('DEBUG: data.json not found or invalid. Using default data.');
     data = {
       orders: [],
       menuItems: [],
       students: []
     };
-    await saveData(); // Create the file with default data.
+    await saveDataToFiles(); // Create the data.json file with default data.
   }
 }
 
-// Updated saveData function remains the same
-async function saveData() {
+async function saveDataToFiles() {
   console.log("DEBUG: Saving data to", dataPath, "with content:", JSON.stringify(data, null, 2));
   try {
     await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
-    console.log('DEBUG: Data saved to file successfully.');
+    console.log('DEBUG: Data saved to data.json successfully.');
   } catch (error) {
-    console.error('DEBUG: Error saving data:', error);
+    console.error('DEBUG: Error saving data to data.json:', error);
   }
 }
 
-// Load initial data on server startup
-loadData();
+// On startup, load the data from data.json and then start the server:
+loadDataFromFiles()
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Error loading initial data:", error);
+    // Even if data loading fails, start the server so you can troubleshoot further.
+    server.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT} (but persistent data might not be loaded properly)`);
+    });
+  });
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Updated API endpoint to get the persisted data
 app.get('/api/data', (req, res) => {
-  // Safety check: if data is not valid, set it to defaults before sending
+  // Ensure data is valid before sending
   if (!data || !data.orders) {
     data = { orders: [], menuItems: [], students: [] };
   }
@@ -74,11 +84,11 @@ app.get('/api/data', (req, res) => {
 });
 
 // API endpoint to update and persist data
-app.post('/api/data', (req, res) => {
+app.post('/api/data', async (req, res) => {
   console.log("DEBUG: API POST /api/data called with body:", req.body);
   const newData = req.body;
   data = { ...data, ...newData };
-  saveData();
+  await saveDataToFiles();
   io.emit('dataUpdated', data);
   res.status(200).send('Data saved successfully');
 });
@@ -92,23 +102,23 @@ app.get('*', (req, res) => {
 io.on('connection', (socket) => {
   console.log('Client connected:', socket.id);
 
-  // Once a client connects, send the most up-to-date data.
+  // Send the current data to the client.
   socket.emit('initialData', data);
 
   // Listen for complete data updates (if you need to update multiple pieces at once)
   socket.on('updateData', async (newData) => {
     console.log('Received updateData from', socket.id);
     data = { ...data, ...newData };
-    await saveData();
+    await saveDataToFiles();
     io.emit('dataUpdated', data);
   });
 
   // Listen for a new order
   socket.on('orderAdded', async (order) => {
     console.log('Order added from', socket.id, 'Order ID:', order.id);
-    if (!data.orders.find(o => o.id === order.id)) { // Avoid duplicates
+    if (!data.orders.find(o => o.id === order.id)) {
       data.orders.push(order);
-      await saveData();
+      await saveDataToFiles();
       io.emit('orderAdded', order);
     }
   });
@@ -120,7 +130,7 @@ io.on('connection', (socket) => {
     if (index !== -1) {
       // Merge the new data with the existing order
       data.orders[index] = { ...data.orders[index], ...updatedOrder };
-      await saveData();
+      await saveDataToFiles();
       io.emit('orderUpdated', data.orders[index]);
     }
   });
@@ -131,7 +141,7 @@ io.on('connection', (socket) => {
     const index = data.orders.findIndex(o => o.id === orderId);
     if (index !== -1) {
       data.orders.splice(index, 1);
-      await saveData();
+      await saveDataToFiles();
       io.emit('orderDeleted', orderId);
     }
   });
@@ -140,7 +150,7 @@ io.on('connection', (socket) => {
   socket.on('menuUpdated', async (menuItems) => {
     console.log('Menu updated from', socket.id);
     data.menuItems = menuItems;
-    await saveData();
+    await saveDataToFiles();
     io.emit('menuUpdated', menuItems);
   });
 
@@ -151,6 +161,3 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});

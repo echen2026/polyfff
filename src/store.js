@@ -18,17 +18,21 @@ const store = reactive({
   isConnected: false,
 
   async loadData() {
+    // First load whatever is in localStorage
+    this.loadFromLocalStorage();
+    
     try {
       const response = await fetch('/api/data');
-      const data = await response.json();
-      this.orders = data.orders;
-      this.menuItems = data.menuItems;
-      this.students = data.students;
-      console.log('Data loaded from server');
+      const serverData = await response.json();
+      console.log('Data loaded from server:', serverData);
+
+      // Always override the local store with the server data.
+      this.orders = serverData.orders;
+      this.menuItems = serverData.menuItems;
+      this.students = serverData.students;
+      this.saveToLocalStorage();
     } catch (error) {
-      console.error('Error loading data:', error);
-      // Load from localStorage as fallback
-      this.loadFromLocalStorage();
+      console.error('Error loading data from server:', error);
     }
   },
 
@@ -101,6 +105,10 @@ const store = reactive({
       this.saveToLocalStorage();
       socket.emit('orderUpdated', this.orders[orderIndex]);
     }
+  },
+
+  saveData() {
+    this.saveToLocalStorage();
   }
 });
 

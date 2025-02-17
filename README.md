@@ -69,6 +69,19 @@ A modern web application designed to streamline the management of Fun Food Frida
 - No sensitive information is transmitted to external servers
 - Regular backups are recommended using the export feature
 
-## ⚙️ License
+## ⚠️ License & Legal Notice
 
-This project is licensed under the "you are not allowed to use, deploy, or read this unless expressly granted permission by Jeremy or Evan" license.
+**RESTRICTED ACCESS - UNAUTHORIZED USE STRICTLY PROHIBITED**
+
+This software is protected under a proprietary license with SEVERE RESTRICTIONS. Any unauthorized access, use, modification, distribution, or reproduction of this code, in whole or in part, is STRICTLY FORBIDDEN and will result in IMMEDIATE ACTION.
+
+**AUTHORIZED USE ONLY:**
+- Access and usage rights are granted EXCLUSIVELY by Jeremy or Evan
+- Written permission MUST be obtained PRIOR to ANY interaction with this codebase
+- All rights reserved. NO IMPLIED LICENSES granted under any circumstance
+
+**VIOLATIONS WILL BE PROSECUTED TO THE FULLEST EXTENT OF THE LAW**
+
+To request authorization, contact Jeremy or Evan directly. If you're reading this without explicit permission, you're already in violation.
+
+---

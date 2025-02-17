@@ -196,6 +196,9 @@ export default {
 };
 
 function findStudentId(firstName, lastName, students) {
+  // Ensure students is an array so that .find can be called safely.
+  students = students || [];
+  
   // Remove all punctuation and extra spaces
   const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim();
   const cleanFirstName = cleanName(firstName);

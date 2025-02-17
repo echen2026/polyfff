@@ -102,6 +102,7 @@ interface Order {
 }
 
 export default defineComponent({
+  name: 'App',
   components: {
     OrderDetail,
     Settings,
@@ -166,8 +167,8 @@ pickedUpCount(): number {
       immediate: true
     }
   },
-  created() {
-    store.loadData()
+  async created() {
+    await store.loadData()
   },
   mounted() {
     emitter.on('addOrder', (order: Order) => {

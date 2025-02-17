@@ -5,12 +5,18 @@ import emitter from './eventBus';
 const store = reactive({
   orders: [],
   students: [],
+  menuItems: [],
 
   async loadData() {
     try {
       const savedData = localStorage.getItem('orders')
       if (savedData) {
         this.orders = JSON.parse(savedData)
+      }
+
+      const savedMenuItems = localStorage.getItem('menuItems')
+      if (savedMenuItems) {
+        this.menuItems = JSON.parse(savedMenuItems)
       }
 
       const response = await fetch('/result.json')
@@ -126,6 +132,11 @@ const store = reactive({
       order[property] = !order[property]
       this.saveData()
     }
+  },
+
+  addOrder(order) {
+    this.orders.push(order)
+    this.saveData()
   }
 });
 

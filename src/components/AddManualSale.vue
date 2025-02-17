@@ -4,48 +4,39 @@
       <h2>Add Manual Sale</h2>
       
       <div class="info-box">
+        <h3>Customer Information</h3>
         <div class="form-group">
-          <label>First Name:</label>
-          <input v-model="firstName" type="text" placeholder="Enter first name" />
+          <label>First Name</label>
+          <input v-model="firstName" placeholder="First Name" />
         </div>
         <div class="form-group">
-          <label>Last Name:</label>
-          <input v-model="lastName" type="text" placeholder="Enter last name" />
+          <label>Last Name</label>
+          <input v-model="lastName" placeholder="Last Name" />
         </div>
         <div class="form-group">
-          <label>Grade:</label>
-          <input v-model="grade" type="text" placeholder="Enter grade" />
+          <label>Grade</label>
+          <input v-model="grade" placeholder="Grade" />
         </div>
       </div>
 
       <div class="status-box">
-        <div class="toggle-container">
-          <label class="toggle-large">
-            <input 
-              type="checkbox" 
-              v-model="pickedUp"
-            >
-            <span class="slider-large"></span>
-            <span class="toggle-label-large">{{ pickedUp ? 'Picked Up' : 'Not Picked Up' }}</span>
-          </label>
-        </div>
-
+        <h3>Order Status</h3>
         <div class="toggle-group">
-          <label class="toggle-small">
-            <input 
-              type="checkbox" 
-              v-model="isPoly"
-            >
-            <span class="slider-small"></span>
-            <span class="toggle-label-small">Poly</span>
+          <label class="toggle-label">
+            <input type="checkbox" v-model="pickedUp">
+            Picked Up
           </label>
-          <label class="toggle-small">
-            <input 
-              type="checkbox" 
-              v-model="prepaid"
-            >
-            <span class="slider-small"></span>
-            <span class="toggle-label-small">Prepaid</span>
+          <label class="toggle-label">
+            <input type="checkbox" v-model="isPoly">
+            Poly
+          </label>
+          <label class="toggle-label">
+            <input type="checkbox" v-model="prepaid">
+            Prepaid
+          </label>
+          <label class="toggle-label">
+            <input type="checkbox" v-model="venmo">
+            Venmo
           </label>
         </div>
       </div>
@@ -53,7 +44,7 @@
       <div class="menu-box">
         <h3>Menu Items</h3>
         <div class="menu-items-grid">
-          <div v-for="item in store.menuItems" :key="item.name" class="menu-item">
+          <div v-for="item in menuItems" :key="item.name" class="menu-item">
             <span class="item-name">{{ item.name }} - ${{ item.price }}</span>
             <div class="quantity-controls">
               <button @click="decrementQuantity(item)" class="quantity-btn">-</button>
@@ -66,7 +57,7 @@
 
       <div class="total-box">
         <div class="total-label">Total</div>
-        <div class="total-amount">${{ calculateTotal }}</div>
+        <div class="total-amount">${{ calculateTotal.toFixed(2) }}</div>
       </div>
 
       <div class="form-actions">
@@ -97,10 +88,14 @@ export default defineComponent({
       selectedItems: {} as Record<string, number>,
       pickedUp: false,
       isPoly: false,
-      prepaid: false
+      prepaid: false,
+      venmo: false
     }
   },
   computed: {
+    menuItems() {
+      return store.menuItems || []
+    },
     calculateTotal(): number {
       return Object.entries(this.selectedItems).reduce((total, [itemName, quantity]) => {
         const item = store.menuItems.find(i => i.name === itemName)
@@ -131,10 +126,23 @@ export default defineComponent({
         this.selectedItems[item.name]--
       }
     },
+    findStudentId(firstName, lastName) {
+      // Remove extra spaces, punctuation and make case insensitive
+      const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim();
+      const cleanFirstName = cleanName(firstName);
+      const cleanLastName = cleanName(lastName);
+      
+      const student = store.students.find(s => 
+        cleanName(s.first_name) === cleanFirstName && 
+        cleanName(s.last_name) === cleanLastName
+      );
+      
+      return student ? student.id.toString() : null;
+    },
     submitOrder() {
       if (!this.isValid) return
 
-      const orderItems: OrderItem[] = Object.entries(this.selectedItems)
+      const orderItems = Object.entries(this.selectedItems)
         .filter(([_, quantity]) => quantity > 0)
         .map(([itemName, quantity]) => {
           const item = store.menuItems.find(i => i.name === itemName)!
@@ -145,19 +153,32 @@ export default defineComponent({
           }
         })
 
+      // Find student ID based on name
+      const studentId = this.findStudentId(this.firstName.trim(), this.lastName.trim());
+
       const order = {
         id: Date.now(),
+        orderId: studentId, // Set the orderId to the found student ID
         firstName: this.firstName.trim(),
         lastName: this.lastName.trim(),
         grade: this.grade.trim(),
         items: orderItems,
         checkedIn: this.pickedUp,
         isPoly: this.isPoly,
-        prepaid: this.prepaid
+        prepaid: this.prepaid,
+        venmo: this.venmo,
+        paymentMethod: this.getPaymentMethod()
       }
 
-      store.addOrder(order)
+      store.orders.push(order)
+      store.saveData()
       this.goHome()
+    },
+    getPaymentMethod() {
+      if (this.isPoly) return 'Poly'
+      if (this.prepaid) return 'Prepaid'
+      if (this.venmo) return 'Venmo'
+      return 'Cash'
     },
     cancel() {
       this.goHome()
@@ -321,14 +342,22 @@ export default defineComponent({
   padding: 1.5rem;
 }
 
-.toggle-container {
-  margin-bottom: 1rem;
+.toggle-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.toggle-group {
+.toggle-label {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 </style>

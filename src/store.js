@@ -2,6 +2,14 @@ import { reactive } from 'vue';
 import { io } from 'socket.io-client';
 import emitter from './eventBus';
 
+// Initialize Socket.IO with reconnection
+const socket = io({
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: Infinity
+});
+
 const store = reactive({
   orders: [],
   students: [],
@@ -9,32 +17,42 @@ const store = reactive({
 
   async loadData() {
     try {
-      const savedData = localStorage.getItem('orders')
-      if (savedData) {
-        this.orders = JSON.parse(savedData)
-      }
-
-      const savedMenuItems = localStorage.getItem('menuItems')
-      if (savedMenuItems) {
-        this.menuItems = JSON.parse(savedMenuItems)
-      }
-
-      const response = await fetch('/result.json')
-      this.students = await response.json()
+      // Initial data load from server instead of localStorage
+      const response = await fetch('/api/data');
+      const data = await response.json();
+      this.orders = data.orders;
+      this.menuItems = data.menuItems;
+      this.students = data.students;
     } catch (error) {
-      console.error('Error loading data:', error)
+      console.error('Error loading data:', error);
+      // Fallback to localStorage if server is unreachable
+      const savedData = localStorage.getItem('orders');
+      if (savedData) {
+        this.orders = JSON.parse(savedData);
+      }
+      const savedMenuItems = localStorage.getItem('menuItems');
+      if (savedMenuItems) {
+        this.menuItems = JSON.parse(savedMenuItems);
+      }
     }
   },
 
   saveData() {
-    localStorage.setItem('orders', JSON.stringify(this.orders))
+    // Save to both localStorage (as backup) and emit to server
+    localStorage.setItem('orders', JSON.stringify(this.orders));
+    socket.emit('updateData', {
+      orders: this.orders,
+      menuItems: this.menuItems
+    });
   },
 
+  // Modify existing methods to emit changes
   updateOrder(updatedOrder) {
-    const index = this.orders.findIndex(o => o.id === updatedOrder.id)
+    const index = this.orders.findIndex(o => o.id === updatedOrder.id);
     if (index !== -1) {
-      this.orders[index] = updatedOrder
-      this.saveData()
+      this.orders[index] = updatedOrder;
+      this.saveData();
+      socket.emit('orderUpdated', updatedOrder);
     }
   },
 
@@ -162,24 +180,61 @@ const store = reactive({
   },
 
   deleteOrder(orderId) {
-    const index = this.orders.findIndex(order => order.id === orderId)
+    const index = this.orders.findIndex(order => order.id === orderId);
     if (index !== -1) {
-      this.orders.splice(index, 1)
-      this.saveData()
+      this.orders.splice(index, 1);
+      this.saveData();
+      socket.emit('orderDeleted', orderId);
     }
   },
 
   toggleOrderProperty(orderId, property) {
-    const order = this.orders.find(o => o.id === orderId)
+    const order = this.orders.find(o => o.id === orderId);
     if (order) {
-      order[property] = !order[property]
-      this.saveData()
+      order[property] = !order[property];
+      this.saveData();
+      socket.emit('orderUpdated', order);
     }
   },
 
   addOrder(order) {
-    this.orders.push(order)
-    this.saveData()
+    this.orders.push(order);
+    this.saveData();
+    socket.emit('orderAdded', order);
+  }
+});
+
+// Socket event listeners for real-time updates
+socket.on('connect', () => {
+  console.log('Connected to server');
+  store.loadData(); // Reload data when reconnected
+});
+
+socket.on('dataUpdated', (data) => {
+  store.orders = data.orders;
+  store.menuItems = data.menuItems;
+  // Update localStorage as backup
+  localStorage.setItem('orders', JSON.stringify(data.orders));
+  localStorage.setItem('menuItems', JSON.stringify(data.menuItems));
+});
+
+socket.on('orderAdded', (order) => {
+  if (!store.orders.find(o => o.id === order.id)) {
+    store.orders.push(order);
+  }
+});
+
+socket.on('orderUpdated', (updatedOrder) => {
+  const index = store.orders.findIndex(o => o.id === updatedOrder.id);
+  if (index !== -1) {
+    store.orders[index] = updatedOrder;
+  }
+});
+
+socket.on('orderDeleted', (orderId) => {
+  const index = store.orders.findIndex(o => o.id === orderId);
+  if (index !== -1) {
+    store.orders.splice(index, 1);
   }
 });
 
@@ -191,13 +246,6 @@ emitter.on('updateOrder', (order) => {
 
 emitter.on('addOrder', (order) => {
   store.addOrder(order);
-});
-
-// Socket.IO connection for real-time updates
-const socket = io();
-socket.on('dataUpdated', (data) => {
-  store.orders = data.orders;
-  store.menuItems = data.menuItems;
 });
 
 export default store; 

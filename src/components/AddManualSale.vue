@@ -4,40 +4,60 @@
       <h2>Add Manual Sale</h2>
       
       <div class="info-box">
-        <h3>Customer Information</h3>
-        <div class="form-group">
-          <label>First Name</label>
-          <input v-model="firstName" placeholder="First Name" />
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input v-model="lastName" placeholder="Last Name" />
-        </div>
-        <div class="form-group">
-          <label>Grade</label>
-          <input v-model="grade" placeholder="Grade" />
+        <div class="customer-info-row">
+          <div class="autocomplete">
+            <input 
+              v-model="firstName" 
+              @input="handleNameInput"
+              placeholder="First Name" 
+              class="compact-input name-input"
+            />
+            <div v-if="suggestions.length" class="suggestions-box">
+              <div 
+                v-for="student in suggestions" 
+                :key="student.id"
+                @click="selectStudent(student)"
+                class="suggestion-item"
+              >
+                {{ student.first_name }} {{ student.last_name }} ({{ student.grade }})
+              </div>
+            </div>
+          </div>
+          <div class="autocomplete">
+            <input 
+              v-model="lastName" 
+              @input="handleNameInput"
+              placeholder="Last Name" 
+              class="compact-input name-input"
+            />
+          </div>
+          <input v-model="grade" placeholder="Grade" class="compact-input grade-input" />
         </div>
       </div>
 
       <div class="status-box">
-        <h3>Order Status</h3>
         <div class="toggle-group">
-          <label class="toggle-label">
+          <label class="pickup-toggle" :class="{ 'is-picked-up': pickedUp }">
             <input type="checkbox" v-model="pickedUp">
-            Picked Up
+            <span class="pickup-label">
+              <span class="pickup-icon">{{ pickedUp ? '✓' : '✕' }}</span>
+              {{ pickedUp ? 'Picked Up' : 'Not Picked Up' }}
+            </span>
           </label>
-          <label class="toggle-label">
-            <input type="checkbox" v-model="isPoly">
-            Poly
-          </label>
-          <label class="toggle-label">
-            <input type="checkbox" v-model="prepaid">
-            Prepaid
-          </label>
-          <label class="toggle-label">
-            <input type="checkbox" v-model="venmo">
-            Venmo
-          </label>
+          <div class="payment-toggles">
+            <label class="payment-toggle">
+              <input type="checkbox" v-model="isPoly">
+              <span>Poly</span>
+            </label>
+            <label class="payment-toggle">
+              <input type="checkbox" v-model="prepaid">
+              <span>Prepaid</span>
+            </label>
+            <label class="payment-toggle">
+              <input type="checkbox" v-model="venmo">
+              <span>Venmo</span>
+            </label>
+          </div>
         </div>
       </div>
 
@@ -56,13 +76,10 @@
       </div>
 
       <div class="total-box">
-        <div class="total-label">Total</div>
-        <div class="total-amount">${{ calculateTotal.toFixed(2) }}</div>
-      </div>
-
-      <div class="form-actions">
-        <button @click="submitOrder" class="submit-button" :disabled="!isValid">Submit Order</button>
-        <button @click="cancel" class="cancel-button">Cancel</button>
+        <div class="total-label">Total: ${{ calculateTotal.toFixed(2) }}</div>
+        <div class="form-actions">
+          <button @click="submitOrder" class="submit-button" :disabled="!isValid">Submit</button>
+        </div>
       </div>
     </div>
   </div>
@@ -89,7 +106,8 @@ export default defineComponent({
       pickedUp: false,
       isPoly: false,
       prepaid: false,
-      venmo: false
+      venmo: false,
+      suggestions: [] as any[]
     }
   },
   computed: {
@@ -188,6 +206,38 @@ export default defineComponent({
       if (typeof this.$parent?.showComponent === 'function') {
         this.$parent.showComponent('orderList')
       }
+    },
+    handleNameInput() {
+      // Clear suggestions if both inputs are empty
+      if (this.firstName.length < 2 && this.lastName.length < 2) {
+        this.suggestions = [];
+        return;
+      }
+      
+      const firstNameTerm = this.firstName.toLowerCase();
+      const lastNameTerm = this.lastName.toLowerCase();
+      
+      this.suggestions = store.students
+        .filter(student => {
+          const matchesFirstName = 
+            student.first_name.toLowerCase().includes(firstNameTerm) ||
+            (student.nickname && student.nickname.toLowerCase().includes(firstNameTerm));
+          
+          const matchesLastName = 
+            student.last_name.toLowerCase().includes(lastNameTerm);
+          
+          // Match if either name matches their respective search term
+          // If one search term is empty, only check the other
+          return (firstNameTerm.length >= 2 ? matchesFirstName : true) &&
+                 (lastNameTerm.length >= 2 ? matchesLastName : true);
+        })
+        .slice(0, 5); // Limit to 5 suggestions
+    },
+    selectStudent(student) {
+      this.firstName = student.first_name;
+      this.lastName = student.last_name;
+      this.grade = student.grade.replace(/^Grade\s*/i, '');
+      this.suggestions = [];
     }
   }
 })
@@ -195,122 +245,216 @@ export default defineComponent({
 
 <style scoped>
 .manual-sale-container {
-  padding: 2rem;
+  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.form-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.customer-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 80px;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.info-box, .menu-box, .total-box, .status-box {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #374151;
-}
-
-.form-group input {
+.name-input {
   width: 100%;
-  padding: 0.75rem;
+}
+
+.compact-input {
+  padding: 0.5rem;
+  font-size: 0.9rem;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.grade-input {
+  width: 80px;
+}
+
+.autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.suggestions-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f3f4f6;
 }
 
 .menu-items-grid {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
 }
 
 .menu-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.menu-item:last-child {
-  border-bottom: none;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.quantity-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+  padding: 0.5rem;
   border: 1px solid #e5e7eb;
-  background: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.quantity-btn:hover {
+  border-radius: 6px;
   background: #f9fafb;
 }
 
-.quantity-display {
-  min-width: 30px;
-  text-align: center;
-  font-weight: 500;
+.status-box {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
 }
 
-.total-box {
-  text-align: center;
-}
-
-.total-label {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.total-amount {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #1d1d1f;
-}
-
-.form-actions {
+.toggle-group {
   display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.submit-button, .cancel-button {
-  padding: 0.75rem 1.5rem;
+.pickup-toggle {
+  background: #fee2e2;
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
-  font-weight: 500;
+  border: 1px solid #fecaca;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+.pickup-toggle:hover {
+  background: #fecaca;
+}
+
+.pickup-toggle.is-picked-up {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.pickup-toggle.is-picked-up:hover {
+  background: #bbf7d0;
+}
+
+.pickup-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.pickup-toggle input[type="checkbox"]:checked + .pickup-label {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.pickup-toggle input[type="checkbox"]:checked + .pickup-label .pickup-icon {
+  color: #16a34a;
+}
+
+.pickup-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: #dc2626;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.is-picked-up .pickup-label {
+  color: #16a34a;
+}
+
+.pickup-icon {
+  font-size: 1.2rem;
+}
+
+.payment-toggles {
+  display: flex;
+  gap: 0.75rem;
+  background: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.payment-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.payment-toggle:hover {
+  background: #e2e8f0;
+}
+
+.payment-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.payment-toggle input[type="checkbox"]:checked + span {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.payment-toggle input[type="checkbox"]:checked {
+  background: #dcfce7;
+}
+
+.payment-toggle input[type="checkbox"]:checked ~ span {
+  background: #dcfce7;
+}
+
+.payment-toggle:has(input[type="checkbox"]:checked) {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.pickup-toggle:has(input[type="checkbox"]:checked) {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .submit-button {
+  padding: 0.75rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
   background: #0071e3;
   color: white;
   border: none;
@@ -323,41 +467,5 @@ export default defineComponent({
 .submit-button:disabled {
   background: #ccc;
   cursor: not-allowed;
-}
-
-.cancel-button {
-  background: white;
-  border: 1px solid #e5e7eb;
-  color: #374151;
-}
-
-.cancel-button:hover {
-  background: #f9fafb;
-}
-
-.status-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-}
-
-.toggle-group {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.toggle-label input[type="checkbox"] {
-  width: 1.2rem;
-  height: 1.2rem;
 }
 </style>

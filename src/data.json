@@ -19,7 +19,9 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": true
+      "checkedIn": false,
+      "isPoly": true,
+      "prepaid": false
     },
     {
       "id": 1739787907496,
@@ -40,7 +42,8 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": true
+      "checkedIn": true,
+      "prepaid": true
     },
     {
       "id": 1739787907498,
@@ -61,7 +64,8 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": true
+      "checkedIn": true,
+      "venmo": true
     },
     {
       "id": 1739787907522,

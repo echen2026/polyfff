@@ -40,15 +40,57 @@ const store = reactive({
 
   processNewOrders(csvData) {
     return csvData.map(row => {
-      // Extract first and last name from the CSV
-      const firstName = row['First Name']
-      const lastName = row['Last Name']
+      // Extract and clean names from the CSV - remove all punctuation and extra spaces
+      const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim()
+      const csvFirstName = cleanName(row['First Name'])
+      const csvLastName = cleanName(row['Last Name'])
 
-      // Find matching student
-      const student = this.students.find(s => 
-        s.first_name.trim().toLowerCase() === firstName.trim().toLowerCase() &&
-        s.last_name.trim().toLowerCase() === lastName.trim().toLowerCase()
-      )
+      console.log(`Looking for match for: ${csvFirstName} ${csvLastName}`)
+
+      // Find matching student with enhanced name matching
+      const student = this.students.find(s => {
+        const firstName = cleanName(s.first_name)
+        const nickname = cleanName(s.nickname)
+        const lastName = cleanName(s.last_name)
+
+        // Split names in case of multiple parts
+        const csvFirstParts = csvFirstName.split(' ')
+        const csvLastParts = csvLastName.split(' ')
+        const firstParts = firstName.split(' ')
+        const lastParts = lastName.split(' ')
+        const nickParts = nickname.split(' ')
+
+        // Join all parts of last name to handle hyphenated names
+        const fullLastName = lastParts.join('')
+        const fullCsvLastName = csvLastParts.join('')
+
+        // Try normal order
+        const normalOrderMatch = (
+          // First name matches first name or nickname
+          (csvFirstParts.some(part => firstParts.includes(part) || nickParts.includes(part))) &&
+          // Last name matches last name (either with spaces or without)
+          (csvLastParts.join(' ') === lastParts.join(' ') || fullCsvLastName === fullLastName)
+        )
+
+        // Try reversed order
+        const reversedOrderMatch = (
+          // CSV first name matches last name
+          (csvFirstParts.join(' ') === lastParts.join(' ') || csvFirstParts.join('') === fullLastName) &&
+          // CSV last name matches first name or nickname
+          (csvLastParts.some(part => firstParts.includes(part) || nickParts.includes(part)))
+        )
+
+        if (normalOrderMatch || reversedOrderMatch) {
+          console.log(`Found match: ${firstName}/${nickname} ${lastName}`)
+          return true
+        }
+
+        return false
+      })
+
+      if (!student) {
+        console.log(`No match found for: ${csvFirstName} ${csvLastName}`)
+      }
 
       // Create items array from the CSV row
       const items = []
@@ -76,15 +118,16 @@ const store = reactive({
         }
       })
 
-      // Create the order object
+      // Create the order object with the matched student's information
       return {
         id: Date.now() + Math.random(), // Ensure unique ID
         orderId: student ? student.id : null,
-        firstName,
-        lastName,
-        grade: row['Grade'],
+        firstName: student ? student.first_name : row['First Name'],
+        lastName: student ? student.last_name : row['Last Name'],
+        grade: student ? student.grade : row['Grade'],
+        email: student ? student.email : '',
         items,
-        paymentMethod: 'Cash', // Default value since it's not in CSV
+        paymentMethod: 'Unpaid',
         checkedIn: false
       }
     })

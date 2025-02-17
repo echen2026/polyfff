@@ -126,6 +126,7 @@ export default {
         'First Name',
         'Last Name',
         'Grade',
+        'Email',
         'Total Cost',
         'Picked Up',
         'Poly',
@@ -148,6 +149,7 @@ export default {
           order.firstName,
           order.lastName,
           order.grade,
+          order.email || '',
           total.toFixed(2),
           order.checkedIn ? 'Yes' : 'No',
           order.isPoly ? 'Yes' : 'No',
@@ -175,8 +177,10 @@ export default {
       document.body.removeChild(link);
     },
     resetOrders() {
-      store.orders = [];
-      store.saveData();
+      if (confirm('Are you sure you want to reset all orders? This action cannot be undone.')) {
+        store.orders = [];
+        store.saveData();
+      }
     },
     addMenuItem() {
       this.menuItems.push({ name: '', price: 0 });
@@ -192,15 +196,56 @@ export default {
 };
 
 function findStudentId(firstName, lastName, students) {
-  // Remove extra spaces, punctuation and make case insensitive
+  // Remove all punctuation and extra spaces
   const cleanName = (name) => name.toLowerCase().replace(/[^\w\s]/g, '').trim();
   const cleanFirstName = cleanName(firstName);
   const cleanLastName = cleanName(lastName);
   
-  const student = students.find(s => 
-    cleanName(s.first_name) === cleanFirstName && 
-    cleanName(s.last_name) === cleanLastName
-  );
+  console.log(`Looking for match for: ${cleanFirstName} ${cleanLastName}`);
+
+  const student = students.find(s => {
+    const studentFirstName = cleanName(s.first_name);
+    const studentNickname = cleanName(s.nickname);
+    const studentLastName = cleanName(s.last_name);
+    
+    // Split names in case of multiple parts
+    const inputFirstParts = cleanFirstName.split(' ');
+    const inputLastParts = cleanLastName.split(' ');
+    const firstParts = studentFirstName.split(' ');
+    const lastParts = studentLastName.split(' ');
+    const nickParts = studentNickname.split(' ');
+
+    // Join all parts of last name to handle hyphenated names
+    const fullLastName = lastParts.join('');
+    const fullInputLastName = inputLastParts.join('');
+
+    // Try normal order
+    const normalOrderMatch = (
+      // Input first name matches first name or nickname
+      (inputFirstParts.some(part => firstParts.includes(part) || nickParts.includes(part))) &&
+      // Last name matches last name (either with spaces or without)
+      (inputLastParts.join(' ') === lastParts.join(' ') || fullInputLastName === fullLastName)
+    );
+
+    // Try reversed order
+    const reversedOrderMatch = (
+      // Input first name matches last name
+      (inputFirstParts.join(' ') === lastParts.join(' ') || inputFirstParts.join('') === fullLastName) &&
+      // Input last name matches first name or nickname
+      (inputLastParts.some(part => firstParts.includes(part) || nickParts.includes(part)))
+    );
+
+    if (normalOrderMatch || reversedOrderMatch) {
+      console.log(`Found match: ${studentFirstName}/${studentNickname} ${studentLastName}`);
+      return true;
+    }
+
+    return false;
+  });
+  
+  if (!student) {
+    console.log(`No match found for: ${cleanFirstName} ${cleanLastName}`);
+  }
   
   return student ? student.id.toString() : 'unknown';
 }

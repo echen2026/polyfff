@@ -13,94 +13,132 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-// In-memory store (replace with a database in production)
+// Global data store
 let data = {
   orders: [],
   menuItems: [],
   students: []
 };
 
-// Load initial data
-async function loadData() {
+// Load data from files
+async function loadDataFromFiles() {
   try {
+    // Load students
     const studentsData = await fs.readFile('result.json', 'utf8');
     data.students = JSON.parse(studentsData);
-    
-    // Load other data if stored in files
-    const ordersData = await fs.readFile('orders.json', 'utf8');
-    data.orders = JSON.parse(ordersData);
-    
-    const menuData = await fs.readFile('menu.json', 'utf8');
-    data.menuItems = JSON.parse(menuData);
+
+    // Load orders with error handling
+    try {
+      const ordersData = await fs.readFile('orders.json', 'utf8');
+      data.orders = JSON.parse(ordersData);
+    } catch (e) {
+      console.log('No existing orders.json, starting fresh');
+      data.orders = [];
+    }
+
+    // Load menu items with error handling
+    try {
+      const menuData = await fs.readFile('menu.json', 'utf8');
+      data.menuItems = JSON.parse(menuData);
+    } catch (e) {
+      console.log('No existing menu.json, starting fresh');
+      data.menuItems = [];
+    }
+
+    console.log('Initial data loaded:', {
+      studentsCount: data.students.length,
+      ordersCount: data.orders.length,
+      menuItemsCount: data.menuItems.length
+    });
   } catch (error) {
-    console.error('Error loading data:', error);
+    console.error('Error loading initial data:', error);
   }
 }
 
-loadData();
+// Save data to files
+async function saveDataToFiles() {
+  try {
+    await fs.writeFile('orders.json', JSON.stringify(data.orders, null, 2));
+    await fs.writeFile('menu.json', JSON.stringify(data.menuItems, null, 2));
+    console.log('Data saved to files');
+  } catch (error) {
+    console.error('Error saving data to files:', error);
+  }
+}
 
-// Serve initial data
+// Initialize data
+loadDataFromFiles();
+
+// API endpoint for initial data load
 app.get('/api/data', (req, res) => {
   res.json(data);
 });
 
-// Socket.IO connection handling
+// Socket connection handling
 io.on('connection', (socket) => {
   console.log('Client connected');
 
-  // Send current data to new clients
-  socket.emit('dataUpdated', data);
+  // Send current data to new client
+  socket.emit('initialData', data);
 
-  // Handle data updates from clients
+  // Handle complete data update
   socket.on('updateData', (newData) => {
+    console.log('Received updateData');
     data.orders = newData.orders;
     data.menuItems = newData.menuItems;
-    // Broadcast to ALL clients including sender
+    saveDataToFiles();
     io.emit('dataUpdated', data);
-    // Save to persistent storage
-    saveData();
   });
 
+  // Handle single order addition
   socket.on('orderAdded', (order) => {
-    // Add order to server data
-    data.orders.push(order);
-    // Broadcast to ALL clients
-    io.emit('orderAdded', order);
-    saveData();
+    console.log('Received new order:', order.id);
+    if (!data.orders.find(o => o.id === order.id)) {
+      data.orders.push(order);
+      saveDataToFiles();
+      io.emit('orderAdded', order);
+    }
   });
 
+  // Handle single order update
   socket.on('orderUpdated', (updatedOrder) => {
-    // Update order in server data
+    console.log('Updating order:', updatedOrder.id);
     const index = data.orders.findIndex(o => o.id === updatedOrder.id);
     if (index !== -1) {
-      data.orders[index] = updatedOrder;
+      // Preserve existing order data and only update changed fields
+      data.orders[index] = {
+        ...data.orders[index],
+        ...updatedOrder
+      };
+      saveDataToFiles();
+      // Broadcast the update to all clients EXCEPT the sender
+      socket.broadcast.emit('orderUpdated', data.orders[index]);
     }
-    // Broadcast to ALL clients
-    io.emit('orderUpdated', updatedOrder);
-    saveData();
   });
 
+  // Handle single order deletion
   socket.on('orderDeleted', (orderId) => {
-    // Delete order from server data
+    console.log('Deleting order:', orderId);
     const index = data.orders.findIndex(o => o.id === orderId);
     if (index !== -1) {
       data.orders.splice(index, 1);
+      saveDataToFiles();
+      io.emit('orderDeleted', orderId);
     }
-    // Broadcast to ALL clients
-    io.emit('orderDeleted', orderId);
-    saveData();
+  });
+
+  // Handle menu updates
+  socket.on('menuUpdated', (menuItems) => {
+    console.log('Updating menu items');
+    data.menuItems = menuItems;
+    saveDataToFiles();
+    io.emit('menuUpdated', menuItems);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
   });
 });
-
-// Save data periodically
-async function saveData() {
-  try {
-    await fs.writeFile('orders.json', JSON.stringify(data.orders));
-    await fs.writeFile('menu.json', JSON.stringify(data.menuItems));
-  } catch (error) {
-    console.error('Error saving data:', error);
-  }
-}
 
 const PORT = process.env.PORT || 3000;
 http.listen(PORT, () => {

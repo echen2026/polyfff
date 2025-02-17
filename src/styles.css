@@ -325,16 +325,53 @@ button {
 }
 
 .pickup-toggle {
-  padding: 0.5rem 1rem;
-  border-radius: 980px;
-  font-size: 0.9rem;
-  background: #ffd60a;
-  color: black;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
 }
 
-.pickup-toggle.checked-in {
-  background: #2fd158;
-  color: white;
+.pickup-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pickup-toggle .pickup-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.pickup-toggle:has(input[type="checkbox"]:checked) {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #16a34a;
+}
+
+.pickup-toggle:not(:has(input[type="checkbox"]:checked)) {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.is-picked-up {
+  background: #dcfce7 !important;
+  border-color: #86efac !important;
+}
+
+.toggle-group {
+  position: relative;
+  z-index: 1;
 }
 
 .order-details {
@@ -523,6 +560,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  isolation: isolate;
 }
 
 .no-selection {

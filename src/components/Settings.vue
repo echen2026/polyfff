@@ -196,7 +196,7 @@ export default {
     },
     saveMenuItems() {
       localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
-      store.menuItems = this.menuItems;
+      store.updateMenuItems(this.menuItems);
     }
   }
 };

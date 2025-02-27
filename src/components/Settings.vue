@@ -88,8 +88,8 @@ export default {
         const order = {
           id: Date.now() + i, // Consider using a more consistent ID generation method
           orderId: studentId, // Link orderId to the student ID
-          firstName: row[3].trim(),
-          lastName: row[2].trim(),
+          firstName: row[2].trim(),
+          lastName: row[3].trim(),
           grade: row[4].trim(),
           items: [],
           paymentMethod: 'Unpaid',

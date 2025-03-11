@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Cheese Pizza",
+    "price": 3
+  },
+  {
+    "name": "Spicy Pepperoni Pizza",
+    "price": 3.5
+  },
+  {
+    "name": "Blazed BBQ",
+    "price": 3.5
+  },
+  {
+    "name": "Herbivore",
+    "price": 3.5
+  },
+  {
+    "name": "Pretzel Bitz",
+    "price": 5
+  },
+  {
+    "name": "Hot Dog Bitz",
+    "price": 6
+  },
+  {
+    "name": "Wetzel's Original Pretzel",
+    "price": 9
+  },
+  {
+    "name": "Capri Sun",
+    "price": 1
+  }
+]

@@ -22,24 +22,70 @@ const store = reactive({
     this.loadFromLocalStorage();
     
     try {
+      console.log('Fetching data from server...');
       const response = await fetch('/api/data');
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+      }
+      
       const serverData = await response.json();
       console.log('Data loaded from server:', serverData);
 
       // Check if students are present in the response
-      if (serverData.students && serverData.students.length > 0) {
-        console.log('Students loaded:', serverData.students);
+      if (serverData.students && Array.isArray(serverData.students) && serverData.students.length > 0) {
+        console.log('Students loaded successfully:', serverData.students.length);
+        this.students = [...serverData.students]; // Create a new array to ensure reactivity
       } else {
-        console.log('No students found in server data.');
+        console.error('No students found in server data or students is not an array.');
+        // Try to load students directly from result.json as a fallback
+        try {
+          console.log('Attempting to load students directly from result.json...');
+          const studentsResponse = await fetch('/result.json');
+          if (!studentsResponse.ok) {
+            throw new Error(`Failed to fetch result.json: ${studentsResponse.status}`);
+          }
+          
+          const studentsData = await studentsResponse.json();
+          if (Array.isArray(studentsData) && studentsData.length > 0) {
+            console.log('Students loaded from result.json:', studentsData.length);
+            this.students = [...studentsData]; // Create a new array to ensure reactivity
+          } else {
+            console.error('Failed to load students from result.json');
+          }
+        } catch (studentsError) {
+          console.error('Error loading students from result.json:', studentsError);
+        }
       }
 
       // Always override the local store with the server data.
-      this.orders = serverData.orders;
-      this.menuItems = serverData.menuItems;
-      this.students = serverData.students;
+      this.orders = serverData.orders || [];
+      this.menuItems = serverData.menuItems || [];
+      
+      // Save to localStorage for offline use
       this.saveToLocalStorage();
+      
+      // Log the final state after loading
+      console.log('Final data state after loading:', {
+        studentsCount: this.students.length,
+        ordersCount: this.orders.length,
+        menuItemsCount: this.menuItems.length
+      });
+      
+      return {
+        studentsCount: this.students.length,
+        ordersCount: this.orders.length,
+        menuItemsCount: this.menuItems.length
+      };
     } catch (error) {
       console.error('Error loading data from server:', error);
+      // Try to load from localStorage as fallback
+      this.loadFromLocalStorage();
+      return {
+        studentsCount: this.students.length,
+        ordersCount: this.orders.length,
+        menuItemsCount: this.menuItems.length,
+        error: error.message
+      };
     }
   },
 
@@ -47,13 +93,27 @@ const store = reactive({
     try {
       const savedOrders = localStorage.getItem('orders');
       const savedMenuItems = localStorage.getItem('menuItems');
+      const savedStudents = localStorage.getItem('students');
       
-      if (savedOrders) this.orders = JSON.parse(savedOrders);
-      if (savedMenuItems) this.menuItems = JSON.parse(savedMenuItems);
+      if (savedOrders) {
+        this.orders = JSON.parse(savedOrders);
+        console.log(`Loaded ${this.orders.length} orders from localStorage`);
+      }
       
-      console.log('Data loaded from localStorage');
+      if (savedMenuItems) {
+        this.menuItems = JSON.parse(savedMenuItems);
+        console.log(`Loaded ${this.menuItems.length} menu items from localStorage`);
+      }
+      
+      if (savedStudents) {
+        const parsedStudents = JSON.parse(savedStudents);
+        if (Array.isArray(parsedStudents) && parsedStudents.length > 0) {
+          this.students = parsedStudents;
+          console.log(`Loaded ${this.students.length} students from localStorage`);
+        }
+      }
     } catch (error) {
-      console.error('Error loading from localStorage:', error);
+      console.error('Error loading data from localStorage:', error);
     }
   },
 
@@ -61,8 +121,14 @@ const store = reactive({
     try {
       localStorage.setItem('orders', JSON.stringify(this.orders));
       localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
+      
+      // Only save students to localStorage if we have them
+      if (Array.isArray(this.students) && this.students.length > 0) {
+        localStorage.setItem('students', JSON.stringify(this.students));
+        console.log(`Saved ${this.students.length} students to localStorage`);
+      }
     } catch (error) {
-      console.error('Error saving to localStorage:', error);
+      console.error('Error saving data to localStorage:', error);
     }
   },
 

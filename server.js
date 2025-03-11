@@ -8,6 +8,52 @@ const fs = require('fs').promises;
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../dist')));
 
+// Serve result.json directly for client-side fallback
+app.get('/result.json', (req, res) => {
+  fs.readFile('result.json', 'utf8')
+    .then(data => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(data);
+    })
+    .catch(err => {
+      console.error('Error serving result.json:', err);
+      res.status(500).send('Error loading student data');
+    });
+});
+
+// API endpoint to get data
+app.get('/api/data', (req, res) => {
+  // Ensure data is properly structured before sending
+  const responseData = {
+    orders: Array.isArray(data.orders) ? data.orders : [],
+    menuItems: Array.isArray(data.menuItems) ? data.menuItems : [],
+    students: Array.isArray(data.students) ? data.students : []
+  };
+  
+  console.log('Sending API data with:', {
+    studentsCount: responseData.students.length,
+    ordersCount: responseData.orders.length,
+    menuItemsCount: responseData.menuItems.length
+  });
+  
+  res.json(responseData);
+});
+
+// API endpoint to check student data status
+app.get('/api/students/status', (req, res) => {
+  res.json({
+    count: Array.isArray(data.students) ? data.students.length : 0,
+    hasData: Array.isArray(data.students) && data.students.length > 0,
+    firstFew: Array.isArray(data.students) && data.students.length > 0 
+      ? data.students.slice(0, 3).map(s => ({
+          id: s.id,
+          first_name: s.first_name,
+          last_name: s.last_name
+        }))
+      : []
+  });
+});
+
 // Handle all routes by serving the index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
@@ -24,13 +70,27 @@ let data = {
 async function loadDataFromFiles() {
   try {
     // Load students
-    const studentsData = await fs.readFile('result.json', 'utf8');
-    data.students = JSON.parse(studentsData);
+    try {
+      const studentsData = await fs.readFile('result.json', 'utf8');
+      const parsedStudents = JSON.parse(studentsData);
+      
+      if (Array.isArray(parsedStudents) && parsedStudents.length > 0) {
+        data.students = parsedStudents;
+        console.log(`Successfully loaded ${data.students.length} students from result.json`);
+      } else {
+        console.error('result.json does not contain a valid array of students');
+        data.students = [];
+      }
+    } catch (e) {
+      console.error('Error loading students from result.json:', e);
+      data.students = [];
+    }
 
     // Load orders with error handling
     try {
       const ordersData = await fs.readFile('orders.json', 'utf8');
       data.orders = JSON.parse(ordersData);
+      console.log(`Successfully loaded ${data.orders.length} orders from orders.json`);
     } catch (e) {
       console.log('No existing orders.json, starting fresh');
       data.orders = [];
@@ -40,6 +100,7 @@ async function loadDataFromFiles() {
     try {
       const menuData = await fs.readFile('menu.json', 'utf8');
       data.menuItems = JSON.parse(menuData);
+      console.log(`Successfully loaded ${data.menuItems.length} menu items from menu.json`);
     } catch (e) {
       console.log('No existing menu.json, starting fresh');
       data.menuItems = [];
@@ -68,11 +129,6 @@ async function saveDataToFiles() {
 
 // Initialize data
 loadDataFromFiles();
-
-// API endpoint for initial data load
-app.get('/api/data', (req, res) => {
-  res.json(data);
-});
 
 // Socket connection handling
 io.on('connection', (socket) => {

@@ -572,7 +572,7 @@ function findStudentId(firstName, lastName, students) {
     console.log(`Student ${i}: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
   });
 
-  // First try exact match
+  // First try exact match (normal order)
   let student = students.find(s => {
     if (!s || typeof s !== 'object') {
       console.warn("Invalid student object:", s);
@@ -593,9 +593,64 @@ function findStudentId(firstName, lastName, students) {
     return exactMatch;
   });
   
+  // Try exact match with swapped names
+  if (!student) {
+    console.log("No exact match found, trying with swapped names...");
+    student = students.find(s => {
+      if (!s || typeof s !== 'object') return false;
+      
+      const studentFirstName = cleanName(s.first_name);
+      const studentNickname = s.nickname ? cleanName(s.nickname) : '';
+      const studentLastName = cleanName(s.last_name);
+      
+      // Check if first name matches last name or last name matches first name
+      const swappedMatch = (studentFirstName === cleanLastName && studentLastName === cleanFirstName) ||
+                          (studentNickname === cleanLastName && studentLastName === cleanFirstName) ||
+                          (studentFirstName === cleanLastName && cleanFirstName === studentLastName) ||
+                          (studentNickname === cleanLastName && cleanFirstName === studentLastName);
+      
+      if (swappedMatch) {
+        console.log(`Swapped name match found: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
+      }
+      
+      return swappedMatch;
+    });
+  }
+  
+  // Try all possible combinations of first name, last name, and nickname
+  if (!student) {
+    console.log("No swapped match found, trying all name combinations...");
+    student = students.find(s => {
+      if (!s || typeof s !== 'object') return false;
+      
+      const studentFirstName = cleanName(s.first_name);
+      const studentNickname = s.nickname ? cleanName(s.nickname) : '';
+      const studentLastName = cleanName(s.last_name);
+      
+      // Create arrays of all possible names
+      const csvNames = [cleanFirstName, cleanLastName].filter(n => n);
+      const studentNames = [studentFirstName, studentNickname, studentLastName].filter(n => n);
+      
+      // Check if any two names match (regardless of order)
+      let matchFound = false;
+      for (const csvName of csvNames) {
+        if (studentNames.includes(csvName)) {
+          matchFound = true;
+          break;
+        }
+      }
+      
+      if (matchFound) {
+        console.log(`Name combination match found: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
+      }
+      
+      return matchFound;
+    });
+  }
+  
   // If no exact match, try fuzzy match (first letter of first name + last name)
   if (!student && cleanFirstName && cleanLastName) {
-    console.log("No exact match found, trying fuzzy match...");
+    console.log("No combination match found, trying fuzzy match...");
     const firstInitial = cleanFirstName.charAt(0);
     student = students.find(s => {
       if (!s || typeof s !== 'object') return false;
@@ -605,7 +660,10 @@ function findStudentId(firstName, lastName, students) {
       const studentLastName = cleanName(s.last_name);
       
       const fuzzyMatch = (studentFirstName.charAt(0) === firstInitial && studentLastName === cleanLastName) ||
-                         (studentNickname.charAt(0) === firstInitial && studentLastName === cleanLastName);
+                         (studentNickname.charAt(0) === firstInitial && studentLastName === cleanLastName) ||
+                         // Also try with swapped names
+                         (studentLastName.charAt(0) === firstInitial && studentFirstName === cleanLastName) ||
+                         (studentLastName.charAt(0) === firstInitial && studentNickname === cleanLastName);
       
       if (fuzzyMatch) {
         console.log(`Fuzzy match found: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
@@ -622,14 +680,42 @@ function findStudentId(firstName, lastName, students) {
       if (!s || typeof s !== 'object') return false;
       
       const studentLastName = cleanName(s.last_name);
+      const studentFirstName = cleanName(s.first_name);
+      const studentNickname = s.nickname ? cleanName(s.nickname) : '';
       
-      const lastNameMatch = studentLastName === cleanLastName;
+      // Check if last name matches any of the student's names
+      const lastNameMatch = studentLastName === cleanLastName || 
+                           studentFirstName === cleanLastName || 
+                           studentNickname === cleanLastName;
       
       if (lastNameMatch) {
         console.log(`Last name match found: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
       }
       
       return lastNameMatch;
+    });
+  }
+  
+  // If still no match, try just matching first name
+  if (!student && cleanFirstName) {
+    console.log("No last name match found, trying first name only match...");
+    student = students.find(s => {
+      if (!s || typeof s !== 'object') return false;
+      
+      const studentFirstName = cleanName(s.first_name);
+      const studentNickname = s.nickname ? cleanName(s.nickname) : '';
+      const studentLastName = cleanName(s.last_name);
+      
+      // Check if first name matches any of the student's names
+      const firstNameMatch = studentFirstName === cleanFirstName || 
+                            studentNickname === cleanFirstName || 
+                            studentLastName === cleanFirstName;
+      
+      if (firstNameMatch) {
+        console.log(`First name match found: ${s.first_name} ${s.last_name} (ID: ${s.id})`);
+      }
+      
+      return firstNameMatch;
     });
   }
   

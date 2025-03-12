@@ -6,6 +6,7 @@
         <button @click="showComponent('orderList')" :class="{ active: currentComponent === 'orderList' }">Home</button>
         <button @click="showComponent('settings')" :class="{ active: currentComponent === 'settings' }">Settings</button>
         <button @click="showComponent('addSale')" :class="{ active: currentComponent === 'addSale' }">Add Manual Sale</button>
+        <button @click="showComponent('extraOrders')" :class="{ active: currentComponent === 'extraOrders' }">Extra Orders</button>
       </nav>
     </header>
 
@@ -75,6 +76,7 @@
 
     <Settings v-if="currentComponent === 'settings'"/>
     <AddManualSale v-if="currentComponent === 'addSale'" @close="showComponent('orderList')" />
+    <ExtraOrders v-if="currentComponent === 'extraOrders'" />
   </div>
 </template>
 
@@ -87,6 +89,7 @@ import emitter from './eventBus'
 import OrderDetail from './components/OrderDetail.vue'
 import Settings from './components/Settings.vue'
 import AddManualSale from './components/AddManualSale.vue'
+import ExtraOrders from './components/ExtraOrders.vue'
 
 interface Order {
   id: number
@@ -104,6 +107,7 @@ interface Order {
   isPoly: boolean
   prepaid: boolean
   venmo: boolean
+  isAbsent: boolean
 }
 
 export default defineComponent({
@@ -112,6 +116,7 @@ export default defineComponent({
     OrderDetail,
     Settings,
     AddManualSale,
+    ExtraOrders
   },
   data() {
     return {
@@ -165,7 +170,7 @@ pickedUpCount(): number {
         // If there are filtered orders and no order is currently selected
         // or the currently selected order is not in the filtered results
         if (newOrders.length > 0 && 
-            (!this.selectedOrder || !newOrders.find(o => o.id === this.selectedOrder.id))) {
+            (!this.selectedOrder || !newOrders.find((o: Order) => o.id === this.selectedOrder?.id))) {
           this.selectOrder(newOrders[0])
         }
       },

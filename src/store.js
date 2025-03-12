@@ -58,7 +58,12 @@ const store = reactive({
       }
 
       // Always override the local store with the server data.
-      this.orders = serverData.orders || [];
+      if (serverData.orders && Array.isArray(serverData.orders)) {
+        // Initialize any missing properties on each order
+        this.orders = serverData.orders.map(order => this.initializeOrderProperties(order));
+      } else {
+        this.orders = [];
+      }
       this.menuItems = serverData.menuItems || [];
       
       // Save to localStorage for offline use
@@ -96,7 +101,9 @@ const store = reactive({
       const savedStudents = localStorage.getItem('students');
       
       if (savedOrders) {
-        this.orders = JSON.parse(savedOrders);
+        const parsedOrders = JSON.parse(savedOrders);
+        // Initialize any missing properties on each order
+        this.orders = parsedOrders.map(order => this.initializeOrderProperties(order));
         console.log(`Loaded ${this.orders.length} orders from localStorage`);
       }
       
@@ -113,7 +120,7 @@ const store = reactive({
         }
       }
     } catch (error) {
-      console.error('Error loading data from localStorage:', error);
+      console.error('Error loading from localStorage:', error);
     }
   },
 
@@ -227,6 +234,16 @@ const store = reactive({
     } catch (error) {
       console.error("Error saving data to server:", error);
     }
+  },
+
+  // Initialize default values for any missing properties
+  initializeOrderProperties(order) {
+    if (order.checkedIn === undefined) order.checkedIn = false;
+    if (order.isPoly === undefined) order.isPoly = false;
+    if (order.prepaid === undefined) order.prepaid = false;
+    if (order.venmo === undefined) order.venmo = false;
+    if (order.isAbsent === undefined) order.isAbsent = false;
+    return order;
   }
 });
 

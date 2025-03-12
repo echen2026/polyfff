@@ -8,55 +8,70 @@
           <div class="order-id">Order #{{ order.orderId }}</div>
         </div>
         
-        <div class="status-box">
-          <label class="toggle-large">
-            <input 
-              type="checkbox" 
-              v-model="localCheckedIn"
-              @change="toggleCheckIn"
-            >
-            <span class="slider-large"></span>
-            <span class="toggle-label-large">{{ localCheckedIn ? 'Picked Up' : 'Not Picked Up' }}</span>
-          </label>
-        </div>
-
-        <div class="total-box" :class="{ 'prepaid-box': localPrepaid }">
-          <div class="total-label">Total</div>
-          <div class="total-amount">${{ calculateTotal }}</div>
+        <div class="combined-box" :class="{ 'absent': localIsAbsent }">
+          <div class="toggle-section">
+            <label class="toggle-large">
+              <input 
+                type="checkbox" 
+                v-model="localCheckedIn"
+                @change="toggleCheckIn"
+              >
+              <span class="slider-large"></span>
+              <span class="toggle-label-large">
+                {{ localIsAbsent ? 'Absent' : (localCheckedIn ? 'Picked Up' : 'Not Picked Up') }}
+              </span>
+            </label>
+          </div>
+          <div class="total-section" :class="{ 'prepaid-box': localPrepaid }">
+            <div class="total-label">Total</div>
+            <div class="total-amount">${{ calculateTotal }}</div>
+          </div>
         </div>
 
         <div class="detail-info">
           <div class="info-row">
-            <span class="label">Grade:</span>
-            <span>{{ order.grade }}</span>
-            <div class="toggle-group">
-              <label class="toggle-small">
-                <input 
-                  type="checkbox" 
-                  v-model="localIsPoly"
-                  @change="togglePoly"
-                >
-                <span class="slider-small"></span>
-                <span class="toggle-label-small">Poly</span>
-              </label>
-              <label class="toggle-small">
-                <input 
-                  type="checkbox" 
-                  v-model="localPrepaid"
-                  @change="togglePrepaid"
-                >
-                <span class="slider-small"></span>
-                <span class="toggle-label-small">Prepaid</span>
-              </label>
-              <label class="toggle-small">
-                <input 
-                  type="checkbox" 
-                  v-model="localVenmo"
-                  @change="toggleVenmo"
-                >
-                <span class="slider-small"></span>
-                <span class="toggle-label-small">Venmo</span>
-              </label>
+            <div class="grade-label">
+              <span class="label">Grade: {{ order.grade }}</span>
+            </div>
+            <div class="toggle-container">
+              <div class="toggle-group">
+                <label class="toggle-small">
+                  <input 
+                    type="checkbox" 
+                    v-model="localIsPoly"
+                    @change="togglePoly"
+                  >
+                  <span class="slider-small"></span>
+                  <span class="toggle-label-small">Poly</span>
+                </label>
+                <label class="toggle-small">
+                  <input 
+                    type="checkbox" 
+                    v-model="localPrepaid"
+                    @change="togglePrepaid"
+                  >
+                  <span class="slider-small"></span>
+                  <span class="toggle-label-small">Prepaid</span>
+                </label>
+                <label class="toggle-small">
+                  <input 
+                    type="checkbox" 
+                    v-model="localVenmo"
+                    @change="toggleVenmo"
+                  >
+                  <span class="slider-small"></span>
+                  <span class="toggle-label-small">Venmo</span>
+                </label>
+                <label class="toggle-small">
+                  <input 
+                    type="checkbox" 
+                    v-model="localIsAbsent"
+                    @change="toggleAbsent"
+                  >
+                  <span class="slider-small"></span>
+                  <span class="toggle-label-small absent-label">Absent</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -109,6 +124,7 @@ interface Order {
   isPoly: boolean
   prepaid: boolean
   venmo: boolean
+  isAbsent: boolean
 }
 
 export default defineComponent({
@@ -124,6 +140,7 @@ export default defineComponent({
     const localCheckedIn = ref(props.order.checkedIn || false)
     const localVenmo = ref(props.order.venmo || false)
     const localIsPoly = ref(props.order.isPoly || false)
+    const localIsAbsent = ref(props.order.isAbsent || false)
 
     // Reset all local state when the order changes
     const resetLocalState = (newOrder: Order) => {
@@ -131,6 +148,7 @@ export default defineComponent({
       localCheckedIn.value = newOrder.checkedIn || false
       localVenmo.value = newOrder.venmo || false
       localIsPoly.value = newOrder.isPoly || false
+      localIsAbsent.value = newOrder.isAbsent || false
     }
 
     // Watch for changes to the order prop itself (when switching between orders)
@@ -155,6 +173,10 @@ export default defineComponent({
     watch(() => props.order.isPoly, (newValue) => {
       localIsPoly.value = newValue || false
     })
+    
+    watch(() => props.order.isAbsent, (newValue) => {
+      localIsAbsent.value = newValue || false
+    })
 
     // Listen for property toggle events
     const handlePropertyToggle = (data: { orderId: number, property: string, value: boolean }) => {
@@ -168,6 +190,8 @@ export default defineComponent({
           localVenmo.value = data.value
         } else if (data.property === 'isPoly') {
           localIsPoly.value = data.value
+        } else if (data.property === 'isAbsent') {
+          localIsAbsent.value = data.value
         }
       }
     }
@@ -185,7 +209,8 @@ export default defineComponent({
       localPrepaid,
       localCheckedIn,
       localVenmo,
-      localIsPoly
+      localIsPoly,
+      localIsAbsent
     }
   },
   computed: {
@@ -213,6 +238,10 @@ export default defineComponent({
       store.toggleOrderProperty(this.order.id, 'venmo')
       // Local state is updated via v-model and watch
     },
+    toggleAbsent() {
+      store.toggleOrderProperty(this.order.id, 'isAbsent')
+      // Local state is updated via v-model and watch
+    },
     confirmDelete() {
       if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {
         store.deleteOrder(this.order.id)
@@ -224,8 +253,8 @@ export default defineComponent({
 
 <style scoped>
 .delete-section {
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   border-top: 1px solid #e2e2e2;
   text-align: right;
 }
@@ -234,11 +263,11 @@ export default defineComponent({
   background: none;
   border: none;
   color: #dc2626;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-size: 0.9rem;
   margin-left: auto;
   border-radius: 6px;
@@ -256,12 +285,251 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.header-section h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
 }
 
 .order-id {
   font-size: 1.1rem;
   color: #6B7280;
   font-weight: 500;
+}
+
+.absent-label {
+  color: #DC2626;
+  font-weight: 500;
+}
+
+.order-detail {
+  height: 100%;
+  padding: 0.6rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.detail-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.combined-box {
+  display: flex;
+  background-color: #F3F4F6;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  padding: 0.75rem;
+}
+
+.combined-box.absent {
+  background-color: #FEE2E2;
+}
+
+.toggle-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.total-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.total-section.prepaid-box {
+  background-color: rgba(254, 242, 242, 0.5);
+  border-radius: 0 8px 8px 0;
+}
+
+.total-label {
+  font-size: 1rem;
+  color: #6B7280;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.detail-info {
+  padding: 0.75rem;
+  background-color: #F3F4F6;
+  border-radius: 8px;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.grade-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+}
+
+.toggle-container {
+  width: 100%;
+}
+
+.toggle-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+.toggle-small {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.toggle-small input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-small .slider-small {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+  flex-shrink: 0;
+}
+
+.toggle-small input:checked + .slider-small {
+  background-color: #2196F3;
+}
+
+.toggle-small input:focus + .slider-small {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.toggle-small input:checked + .slider-small:before {
+  transform: translateX(16px);
+}
+
+.toggle-small .slider-small:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle-label-small {
+  font-size: 0.9rem;
+  color: #6B7280;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Large toggle styles */
+.toggle-large {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.toggle-large input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider-large {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 26px;
+  transition: 0.4s;
+  flex-shrink: 0;
+}
+
+.toggle-large input:checked + .slider-large {
+  background-color: #10B981;
+}
+
+.toggle-large input:focus + .slider-large {
+  box-shadow: 0 0 1px #10B981;
+}
+
+.toggle-large input:checked + .slider-large:before {
+  transform: translateX(26px);
+}
+
+.slider-large:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle-label-large {
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.order-items h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.item-price {
+  font-weight: 600;
 }
 </style>

@@ -19,7 +19,11 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": true
+      "checkedIn": true,
+      "isPoly": true,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
       "id": 1741814704847,
@@ -40,7 +44,11 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": true,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
       "id": 1741814704848,
@@ -66,7 +74,11 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": true
     },
     {
       "id": 1741814704850,
@@ -113,7 +125,11 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": true
     },
     {
       "id": 1741814704854,

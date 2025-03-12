@@ -271,10 +271,12 @@ export default defineComponent({
   font-size: 0.9rem;
   margin-left: auto;
   border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .delete-button:hover {
   background: #fee2e2;
+  transform: translateY(-1px);
 }
 
 .delete-icon {
@@ -286,31 +288,39 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  background-color: #F9FAFB;
+  border-radius: 8px;
+  border-left: 4px solid #3B82F6;
 }
 
 .header-section h2 {
   font-size: 1.5rem;
   margin: 0;
   font-weight: 600;
+  color: #1F2937;
 }
 
 .order-id {
   font-size: 1.1rem;
   color: #6B7280;
   font-weight: 500;
+  background-color: #E5E7EB;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
 }
 
 .absent-label {
   color: #DC2626;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .order-detail {
   height: 100%;
   padding: 0.6rem;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .detail-grid {
@@ -329,12 +339,14 @@ export default defineComponent({
   display: flex;
   background-color: #F3F4F6;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   padding: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .combined-box.absent {
   background-color: #FEE2E2;
+  border-left: 4px solid #EF4444;
 }
 
 .toggle-section {
@@ -368,12 +380,14 @@ export default defineComponent({
 .total-amount {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #047857;
 }
 
 .detail-info {
   padding: 0.75rem;
   background-color: #F3F4F6;
   border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .info-row {
@@ -386,10 +400,16 @@ export default defineComponent({
   font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 0.1rem;
+  color: #4B5563;
+  background-color: #E5E7EB;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  display: inline-block;
 }
 
 .toggle-container {
   width: 100%;
+  margin-top: 0.25rem;
 }
 
 .toggle-group {
@@ -404,6 +424,13 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-small:hover {
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .toggle-small input[type="checkbox"] {
@@ -425,11 +452,11 @@ export default defineComponent({
 }
 
 .toggle-small input:checked + .slider-small {
-  background-color: #2196F3;
+  background-color: #3B82F6;
 }
 
 .toggle-small input:focus + .slider-small {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #3B82F6;
 }
 
 .toggle-small input:checked + .slider-small:before {
@@ -450,7 +477,7 @@ export default defineComponent({
 
 .toggle-label-small {
   font-size: 0.9rem;
-  color: #6B7280;
+  color: #4B5563;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -512,24 +539,45 @@ export default defineComponent({
   white-space: nowrap;
 }
 
+.detail-right {
+  background-color: #F9FAFB;
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 .order-items h3 {
   font-size: 1.2rem;
   margin-top: 0;
   margin-bottom: 0.75rem;
+  color: #1F2937;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .item-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.25rem 0;
+  padding: 0.4rem 0;
   font-size: 0.95rem;
+  border-bottom: 1px dashed #E5E7EB;
+}
+
+.item-row:last-child {
+  border-bottom: none;
 }
 
 .item-name {
   font-weight: 500;
+  color: #1F2937;
+}
+
+.item-quantity {
+  color: #6B7280;
 }
 
 .item-price {
   font-weight: 600;
+  color: #047857;
 }
 </style>

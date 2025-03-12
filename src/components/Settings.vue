@@ -279,6 +279,7 @@ export default {
         'Email',
         'Total Cost',
         'Picked Up',
+        'Absent',
         'Poly',
         'Prepaid',
         'Venmo'
@@ -294,17 +295,28 @@ export default {
           return sum + (menuItem ? menuItem.price * item.quantity : 0);
         }, 0);
 
+        // Find student email from result.json based on ID
+        let email = order.email || '';
+        if (order.orderId) {
+          // Try to find the student by ID in the students array
+          const student = store.students.find(s => s.id.toString() === order.orderId.toString());
+          if (student && student.email) {
+            email = student.email;
+          }
+        }
+
         // Create base row data with toggles
         const row = [
           order.firstName,
           order.lastName,
           order.grade,
-          order.email || '',
+          email,
           total.toFixed(2),
           order.checkedIn ? 'Yes' : 'No',
-          order.isPoly ? 'Yes' : 'No',
-          order.prepaid ? 'Yes' : 'No',
-          order.venmo ? 'Yes' : 'No'
+          order.isAbsent ? 'Y' : '',
+          order.isPoly ? 'Y' : '',
+          order.prepaid ? 'Y' : '',
+          order.venmo ? 'Y' : ''
         ];
         
         // Add quantities for each menu item

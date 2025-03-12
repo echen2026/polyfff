@@ -80,7 +80,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+// @ts-ignore
 import store from './store'
+// @ts-ignore
 import emitter from './eventBus'
 import OrderDetail from './components/OrderDetail.vue'
 import Settings from './components/Settings.vue'
@@ -99,6 +101,9 @@ interface Order {
   }>
   paymentMethod: string
   checkedIn: boolean
+  isPoly: boolean
+  prepaid: boolean
+  venmo: boolean
 }
 
 export default defineComponent({
@@ -191,10 +196,28 @@ pickedUpCount(): number {
       this.currentComponent = component
     },
     selectOrder(order: Order) {
-      this.selectedOrder = order
+      // Create a fresh copy from the store to ensure we have the latest data
+      const storeOrder = store.orders.find((o: Order) => o.id === order.id)
+      if (storeOrder) {
+        // Create a deep copy to avoid reference issues
+        this.selectedOrder = JSON.parse(JSON.stringify(storeOrder))
+      } else {
+        // Fallback to the provided order if not found in store
+        this.selectedOrder = JSON.parse(JSON.stringify(order))
+      }
+      console.log('Selected order:', this.selectedOrder)
     },
     handleOrderUpdate(updatedOrder: Order) {
       store.updateOrder(updatedOrder)
+      
+      // If this is the currently selected order, update the selected order as well
+      if (this.selectedOrder && this.selectedOrder.id === updatedOrder.id) {
+        // Create a fresh copy from the store to ensure all properties are in sync
+        const updatedOrderFromStore = store.orders.find((o: Order) => o.id === updatedOrder.id)
+        if (updatedOrderFromStore) {
+          this.selectedOrder = JSON.parse(JSON.stringify(updatedOrderFromStore))
+        }
+      }
     },
     addOrder(order: Order) {
       order.id = Date.now()

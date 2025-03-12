@@ -173,11 +173,31 @@ const store = reactive({
   toggleOrderProperty(orderId, property) {
     const orderIndex = this.orders.findIndex(o => o.id === orderId);
     if (orderIndex !== -1) {
-      // Directly update the reactive property on this order
-      this.orders[orderIndex][property] = !this.orders[orderIndex][property];
+      // Create a new order object to ensure proper reactivity
+      const updatedOrder = { ...this.orders[orderIndex] };
+      
+      // Toggle the property
+      updatedOrder[property] = !updatedOrder[property];
+      
+      console.log(`Toggling ${property} for order ${orderId} to ${updatedOrder[property]}`);
+      
+      // Update the order in the array
+      this.orders[orderIndex] = updatedOrder;
+      
+      // Save changes and emit update
       this.saveToLocalStorage();
-      socket.emit('orderUpdated', this.orders[orderIndex]);
+      socket.emit('orderUpdated', updatedOrder);
+      
+      // Also emit a local event for components to react to
+      emitter.emit('orderPropertyToggled', { 
+        orderId, 
+        property, 
+        value: updatedOrder[property] 
+      });
+      
+      return updatedOrder;
     }
+    return null;
   },
 
   async saveData() {

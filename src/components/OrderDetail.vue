@@ -12,7 +12,7 @@
           <label class="toggle-large">
             <input 
               type="checkbox" 
-              :checked="localCheckedIn"
+              v-model="localCheckedIn"
               @change="toggleCheckIn"
             >
             <span class="slider-large"></span>
@@ -33,7 +33,7 @@
               <label class="toggle-small">
                 <input 
                   type="checkbox" 
-                  :checked="order.isPoly"
+                  v-model="localIsPoly"
                   @change="togglePoly"
                 >
                 <span class="slider-small"></span>
@@ -42,7 +42,7 @@
               <label class="toggle-small">
                 <input 
                   type="checkbox" 
-                  :checked="localPrepaid"
+                  v-model="localPrepaid"
                   @change="togglePrepaid"
                 >
                 <span class="slider-small"></span>
@@ -51,7 +51,7 @@
               <label class="toggle-small">
                 <input 
                   type="checkbox" 
-                  :checked="localVenmo"
+                  v-model="localVenmo"
                   @change="toggleVenmo"
                 >
                 <span class="slider-small"></span>
@@ -85,8 +85,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, watch } from 'vue'
+import { defineComponent, PropType, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+// @ts-ignore
 import store from '../store'
+// @ts-ignore
+import emitter from '../eventBus'
 
 interface OrderItem {
   name: string
@@ -117,27 +120,72 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const localPrepaid = ref(props.order.prepaid)
-    const localCheckedIn = ref(props.order.checkedIn)
-    const localVenmo = ref(props.order.venmo)
+    const localPrepaid = ref(props.order.prepaid || false)
+    const localCheckedIn = ref(props.order.checkedIn || false)
+    const localVenmo = ref(props.order.venmo || false)
+    const localIsPoly = ref(props.order.isPoly || false)
 
+    // Reset all local state when the order changes
+    const resetLocalState = (newOrder: Order) => {
+      localPrepaid.value = newOrder.prepaid || false
+      localCheckedIn.value = newOrder.checkedIn || false
+      localVenmo.value = newOrder.venmo || false
+      localIsPoly.value = newOrder.isPoly || false
+    }
+
+    // Watch for changes to the order prop itself (when switching between orders)
+    watch(() => props.order.id, () => {
+      console.log('Order changed, resetting local state')
+      resetLocalState(props.order)
+    }, { immediate: true })
+
+    // Watch for changes to individual properties
     watch(() => props.order.prepaid, (newValue) => {
-      localPrepaid.value = newValue
+      localPrepaid.value = newValue || false
     })
 
     watch(() => props.order.checkedIn, (newValue) => {
-      localCheckedIn.value = newValue
+      localCheckedIn.value = newValue || false
     })
 
     watch(() => props.order.venmo, (newValue) => {
-      localVenmo.value = newValue
+      localVenmo.value = newValue || false
+    })
+
+    watch(() => props.order.isPoly, (newValue) => {
+      localIsPoly.value = newValue || false
+    })
+
+    // Listen for property toggle events
+    const handlePropertyToggle = (data: { orderId: number, property: string, value: boolean }) => {
+      if (data.orderId === props.order.id) {
+        // Update the corresponding local state
+        if (data.property === 'prepaid') {
+          localPrepaid.value = data.value
+        } else if (data.property === 'checkedIn') {
+          localCheckedIn.value = data.value
+        } else if (data.property === 'venmo') {
+          localVenmo.value = data.value
+        } else if (data.property === 'isPoly') {
+          localIsPoly.value = data.value
+        }
+      }
+    }
+
+    onMounted(() => {
+      emitter.on('orderPropertyToggled', handlePropertyToggle)
+    })
+
+    onBeforeUnmount(() => {
+      emitter.off('orderPropertyToggled', handlePropertyToggle)
     })
 
     return {
       store,
       localPrepaid,
       localCheckedIn,
-      localVenmo
+      localVenmo,
+      localIsPoly
     }
   },
   computed: {
@@ -149,19 +197,21 @@ export default defineComponent({
   },
   methods: {
     toggleCheckIn() {
+      // Update the store first
       store.toggleOrderProperty(this.order.id, 'checkedIn')
-      this.localCheckedIn = !this.localCheckedIn
+      // Local state is updated via v-model and watch
     },
     togglePoly() {
       store.toggleOrderProperty(this.order.id, 'isPoly')
+      // Local state is updated via v-model and watch
     },
     togglePrepaid() {
       store.toggleOrderProperty(this.order.id, 'prepaid')
-      this.localPrepaid = !this.localPrepaid
+      // Local state is updated via v-model and watch
     },
     toggleVenmo() {
       store.toggleOrderProperty(this.order.id, 'venmo')
-      this.localVenmo = !this.localVenmo
+      // Local state is updated via v-model and watch
     },
     confirmDelete() {
       if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {

@@ -286,8 +286,27 @@ socket.on('orderUpdated', (updatedOrder) => {
   console.log('Received order update:', updatedOrder.id);
   const index = store.orders.findIndex(o => o.id === updatedOrder.id);
   if (index !== -1) {
+    // Get the old order to compare properties
+    const oldOrder = store.orders[index];
+    
+    // Update the order in the store
     store.orders[index] = updatedOrder;
     store.saveToLocalStorage();
+    
+    // Check which boolean properties have changed and emit events for them
+    const booleanProperties = ['checkedIn', 'isPoly', 'prepaid', 'venmo', 'isAbsent'];
+    
+    booleanProperties.forEach(property => {
+      if (oldOrder[property] !== updatedOrder[property]) {
+        console.log(`Property ${property} changed from ${oldOrder[property]} to ${updatedOrder[property]}`);
+        // Emit an event for the property change
+        emitter.emit('orderPropertyToggled', {
+          orderId: updatedOrder.id,
+          property: property,
+          value: updatedOrder[property]
+        });
+      }
+    });
   }
 });
 

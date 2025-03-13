@@ -157,6 +157,12 @@ export default defineComponent({
       resetLocalState(props.order)
     }, { immediate: true })
 
+    // Watch for changes to the entire order object (for real-time updates)
+    watch(() => props.order, (newOrder) => {
+      console.log('Order object updated, updating local state')
+      resetLocalState(newOrder)
+    }, { deep: true })
+
     // Watch for changes to individual properties
     watch(() => props.order.prepaid, (newValue) => {
       localPrepaid.value = newValue || false
@@ -223,24 +229,39 @@ export default defineComponent({
   methods: {
     toggleCheckIn() {
       // Update the store first
-      store.toggleOrderProperty(this.order.id, 'checkedIn')
-      // Local state is updated via v-model and watch
+      const updatedOrder = store.toggleOrderProperty(this.order.id, 'checkedIn')
+      // Update local state immediately
+      if (updatedOrder) {
+        this.localCheckedIn = updatedOrder.checkedIn
+      }
     },
     togglePoly() {
-      store.toggleOrderProperty(this.order.id, 'isPoly')
-      // Local state is updated via v-model and watch
+      const updatedOrder = store.toggleOrderProperty(this.order.id, 'isPoly')
+      // Update local state immediately
+      if (updatedOrder) {
+        this.localIsPoly = updatedOrder.isPoly
+      }
     },
     togglePrepaid() {
-      store.toggleOrderProperty(this.order.id, 'prepaid')
-      // Local state is updated via v-model and watch
+      const updatedOrder = store.toggleOrderProperty(this.order.id, 'prepaid')
+      // Update local state immediately
+      if (updatedOrder) {
+        this.localPrepaid = updatedOrder.prepaid
+      }
     },
     toggleVenmo() {
-      store.toggleOrderProperty(this.order.id, 'venmo')
-      // Local state is updated via v-model and watch
+      const updatedOrder = store.toggleOrderProperty(this.order.id, 'venmo')
+      // Update local state immediately
+      if (updatedOrder) {
+        this.localVenmo = updatedOrder.venmo
+      }
     },
     toggleAbsent() {
-      store.toggleOrderProperty(this.order.id, 'isAbsent')
-      // Local state is updated via v-model and watch
+      const updatedOrder = store.toggleOrderProperty(this.order.id, 'isAbsent')
+      // Update local state immediately
+      if (updatedOrder) {
+        this.localIsAbsent = updatedOrder.isAbsent
+      }
     },
     confirmDelete() {
       if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {

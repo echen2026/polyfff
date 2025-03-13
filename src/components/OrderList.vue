@@ -73,9 +73,9 @@ export default {
         filtered = filtered.filter(order => {
           switch (this.currentFilter) {
             case 'cash': return order.paymentMethod === 'Cash';
-            case 'venmo': return order.paymentMethod === 'Venmo';
-            case 'prepaid': return order.paymentMethod === 'Prepaid';
-            case 'poly': return order.paymentMethod === 'Poly';
+            case 'venmo': return order.venmo === true;
+            case 'prepaid': return order.prepaid === true;
+            case 'poly': return order.isPoly === true;
             case 'unpaid': return order.paymentMethod === 'Unpaid';
             case 'picked-up': return order.checkedIn;
             case 'not-picked-up': return !order.checkedIn;

@@ -288,15 +288,16 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
   background-color: #F9FAFB;
   border-radius: 8px;
   border-left: 4px solid #3B82F6;
 }
 
 .header-section h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 1.5rem;
-  margin: 0;
   font-weight: 600;
   color: #1F2937;
 }
@@ -306,8 +307,10 @@ export default defineComponent({
   color: #6B7280;
   font-weight: 500;
   background-color: #E5E7EB;
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .absent-label {
@@ -332,7 +335,7 @@ export default defineComponent({
 .detail-left {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.75rem;
 }
 
 .combined-box {
@@ -340,7 +343,7 @@ export default defineComponent({
   background-color: #F3F4F6;
   border-radius: 8px;
   transition: all 0.3s ease;
-  padding: 0.75rem;
+  padding: 1.25rem 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -353,6 +356,7 @@ export default defineComponent({
   flex: 1;
   display: flex;
   align-items: center;
+  padding: 0.5rem 0;
 }
 
 .total-section {
@@ -361,7 +365,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  padding-left: 0.75rem;
+  padding-left: 1rem;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -374,17 +378,17 @@ export default defineComponent({
   font-size: 1rem;
   color: #6B7280;
   font-weight: 500;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.3rem;
 }
 
 .total-amount {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #047857;
 }
 
 .detail-info {
-  padding: 0.75rem;
+  padding: 1.25rem 1rem;
   background-color: #F3F4F6;
   border-radius: 8px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -393,29 +397,29 @@ export default defineComponent({
 .info-row {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .grade-label {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.3rem;
   color: #4B5563;
   background-color: #E5E7EB;
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 6px;
   display: inline-block;
 }
 
 .toggle-container {
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .toggle-group {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem 0.75rem;
+  gap: 0.75rem 1rem;
   width: 100%;
 }
 
@@ -423,8 +427,8 @@ export default defineComponent({
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.5rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 6px;
   transition: background-color 0.2s ease;
 }

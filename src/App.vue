@@ -233,7 +233,12 @@ export default defineComponent({
         });
       }
 
-      return filtered;
+      // Sort by last name
+      return filtered.sort((a, b) => {
+        const lastNameA = a.lastName.toLowerCase();
+        const lastNameB = b.lastName.toLowerCase();
+        return lastNameA.localeCompare(lastNameB);
+      });
     },
     notPickedUpCount(): number {
       return this.orders.filter(order => !order.checkedIn).length

@@ -95,14 +95,23 @@ export default defineComponent({
     
     // Filter orders based on the selected filter
     const filteredOrders = computed(() => {
+      let filtered;
       if (currentFilter.value === 'all') {
-        return notPickedUpOrders.value
+        filtered = notPickedUpOrders.value;
       } else if (currentFilter.value === 'absent') {
-        return notPickedUpOrders.value.filter((order: Order) => order.isAbsent)
+        filtered = notPickedUpOrders.value.filter((order: Order) => order.isAbsent);
       } else if (currentFilter.value === 'regular') {
-        return notPickedUpOrders.value.filter((order: Order) => !order.isAbsent)
+        filtered = notPickedUpOrders.value.filter((order: Order) => !order.isAbsent);
+      } else {
+        filtered = notPickedUpOrders.value;
       }
-      return notPickedUpOrders.value
+
+      // Sort by last name
+      return filtered.sort((a: Order, b: Order) => {
+        const lastNameA = a.lastName.toLowerCase();
+        const lastNameB = b.lastName.toLowerCase();
+        return lastNameA.localeCompare(lastNameB);
+      });
     })
     
     // Calculate total counts for each item across all not picked up orders

@@ -1,26 +1,246 @@
 {
   "orders": [
     {
-      "id": 1741814704845,
-      "orderId": "5931057",
-      "firstName": "Ankeles",
-      "lastName": "Sophie",
-      "grade": "11",
+      "id": 1741814704907,
+      "orderId": "6986103",
+      "firstName": "Durham",
+      "lastName": "Ajani",
+      "grade": "9",
       "items": [
         {
-          "name": "Cheese Pizza",
+          "name": "Spicy Pepperoni Pizza",
           "quantity": 1,
-          "price": 3
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 2,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705008,
+      "orderId": "6986120",
+      "firstName": "Norheim",
+      "lastName": "Aleah",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704870,
+      "orderId": "8154546",
+      "firstName": "Chan",
+      "lastName": "Alister",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
         },
         {
           "name": "Herbivore",
-          "quantity": 1,
+          "quantity": 2,
           "price": 3.5
         }
       ],
       "paymentMethod": "Unpaid",
       "checkedIn": true,
-      "isPoly": true,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705006,
+      "orderId": "7405481",
+      "firstName": "Nieves",
+      "lastName": "Allison",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704995,
+      "orderId": "3707729",
+      "firstName": "Miller",
+      "lastName": "Amari",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 3,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705061,
+      "orderId": "6986114",
+      "firstName": "Rodriguez",
+      "lastName": "Ambrosio",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705067,
+      "orderId": "6553100",
+      "firstName": "Shih",
+      "lastName": "Amelia",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705065,
+      "orderId": "8154635",
+      "firstName": "Shamsi",
+      "lastName": "Amira",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 2,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705091,
+      "orderId": "7787660",
+      "firstName": "Williams",
+      "lastName": "Anara",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
       "prepaid": false,
       "venmo": false,
       "isAbsent": false
@@ -45,6 +265,2161 @@
       ],
       "paymentMethod": "Unpaid",
       "checkedIn": true,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705051,
+      "orderId": "3707743",
+      "firstName": "Pisano",
+      "lastName": "Anna",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705018,
+      "orderId": "5931093",
+      "firstName": "Patel",
+      "lastName": "Anya",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705095,
+      "orderId": "6614650",
+      "firstName": "Wong",
+      "lastName": "Apollo",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 4,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705011,
+      "orderId": "7787647",
+      "firstName": "Ohanian",
+      "lastName": "Areni",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704899,
+      "orderId": "7787610",
+      "firstName": "Dhadwal",
+      "lastName": "Arjun",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705002,
+      "orderId": "3707730",
+      "firstName": "Motley",
+      "lastName": "Ashlyn",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704985,
+      "orderId": "6553103",
+      "firstName": "Ma",
+      "lastName": "Audrey",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": true,
+      "prepaid": false,
+      "venmo": true,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704880,
+      "orderId": "7405475",
+      "firstName": "Cho",
+      "lastName": "August",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704987,
+      "orderId": "8154569",
+      "firstName": "Mallinger",
+      "lastName": "Ava",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704882,
+      "orderId": "7787564",
+      "firstName": "Connolly",
+      "lastName": "Brynn",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704955,
+      "orderId": "7787634",
+      "firstName": "Kennedy",
+      "lastName": "Caiden",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 3,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705087,
+      "orderId": "8154578",
+      "firstName": "Wang",
+      "lastName": "Caralee",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704852,
+      "orderId": "3520480",
+      "firstName": "Barnes",
+      "lastName": "Cashel",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 3,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": true
+    },
+    {
+      "id": 1741814704932,
+      "orderId": "6553113",
+      "firstName": "Hajimiri",
+      "lastName": "Cavon",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704872,
+      "orderId": "8154592",
+      "firstName": "Chao",
+      "lastName": "Celine",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705004,
+      "orderId": "8154584",
+      "firstName": "Newhall",
+      "lastName": "Charlotte",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814737674,
+      "orderId": "5931061",
+      "firstName": "Evan",
+      "lastName": "Chen",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        }
+      ],
+      "checkedIn": true,
+      "isPoly": true,
+      "prepaid": true,
+      "venmo": false,
+      "paymentMethod": "Poly",
+      "isAbsent": false
+    },
+    {
+      "id": 1741982992586,
+      "orderId": "5931061",
+      "firstName": "Evan",
+      "lastName": "Chen",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        }
+      ],
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": true,
+      "isAbsent": false,
+      "paymentMethod": "Unpaid"
+    },
+    {
+      "id": 1741814704863,
+      "orderId": "5931525",
+      "firstName": "Burt",
+      "lastName": "Clive",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 4,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705089,
+      "orderId": "3520565",
+      "firstName": "Watson",
+      "lastName": "Daniela",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704969,
+      "orderId": "5931081",
+      "firstName": "Lara",
+      "lastName": "Danny",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704874,
+      "orderId": "7787607",
+      "firstName": "Chen",
+      "lastName": "Dora",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705096,
+      "orderId": "3520567",
+      "firstName": "Woodruff",
+      "lastName": "Edge",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 3,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704934,
+      "orderId": "3334757",
+      "firstName": "Henry",
+      "lastName": "Elissa",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704944,
+      "orderId": "6553105",
+      "firstName": "Huang",
+      "lastName": "Elizabeth",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704894,
+      "orderId": "7827618",
+      "firstName": "Dang",
+      "lastName": "Elsie",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704948,
+      "orderId": "3707711",
+      "firstName": "Joanou",
+      "lastName": "Emmett",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704989,
+      "orderId": "3707723",
+      "firstName": "Martin",
+      "lastName": "Esa",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704938,
+      "orderId": "3334760",
+      "firstName": "Hoffman",
+      "lastName": "Ethan",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705076,
+      "orderId": "7405470",
+      "firstName": "Thompson",
+      "lastName": "Finn",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704913,
+      "orderId": "3707690",
+      "firstName": "Felgner",
+      "lastName": "Graydon",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704888,
+      "orderId": "7787561",
+      "firstName": "Cundieff",
+      "lastName": "Hadyn",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704905,
+      "orderId": "3707685",
+      "firstName": "doyle",
+      "lastName": "harper",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704950,
+      "orderId": "6553107",
+      "firstName": "Johnson",
+      "lastName": "Harper",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705049,
+      "orderId": "8154624",
+      "firstName": "Perez",
+      "lastName": "Isabel",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704936,
+      "orderId": "6986126",
+      "firstName": "Heredia",
+      "lastName": "Isabella",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 2,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704977,
+      "orderId": "6553110",
+      "firstName": "Leichter",
+      "lastName": "Jack",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705063,
+      "orderId": "7405416",
+      "firstName": "Schugren",
+      "lastName": "Jack",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704997,
+      "orderId": "7405480",
+      "firstName": "Modjeski",
+      "lastName": "Jasper",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705100,
+      "orderId": "7787663",
+      "firstName": "Yuan",
+      "lastName": "Jemma",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704868,
+      "orderId": "7444288",
+      "firstName": "Cardillo",
+      "lastName": "Jen",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": true,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704946,
+      "orderId": "7787630",
+      "firstName": "Hutt",
+      "lastName": "Jujube",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705075,
+      "orderId": "6553094",
+      "firstName": "Swanson",
+      "lastName": "Julia",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705078,
+      "orderId": "8170600",
+      "firstName": "Thorell",
+      "lastName": "Kaiden",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 3,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704877,
+      "orderId": "6553099",
+      "firstName": "Chiao",
+      "lastName": "Kaitlyn",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704970,
+      "orderId": "3520520",
+      "firstName": "Lara",
+      "lastName": "Kalyx",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704854,
+      "orderId": "7827628",
+      "firstName": "Barton",
+      "lastName": "Karen",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704957,
+      "orderId": "3707716",
+      "firstName": "Kim",
+      "lastName": "Karina",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704975,
+      "orderId": "6553096",
+      "firstName": "Lee",
+      "lastName": "Karissa",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704850,
+      "orderId": "3707664",
+      "firstName": "asperger",
+      "lastName": "kate",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704959,
+      "orderId": "8154611",
+      "firstName": "Kim",
+      "lastName": "Keira",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704940,
+      "orderId": "8154658",
+      "firstName": "Hong",
+      "lastName": "Kelland",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704875,
+      "orderId": "7787608",
+      "firstName": "Chiang-Zanoria",
+      "lastName": "Kyan",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704866,
+      "orderId": "7405465",
+      "firstName": "Cameron",
+      "lastName": "Kylir",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 3,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705054,
+      "orderId": "6986125",
+      "firstName": "Poplock",
+      "lastName": "Lauren",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705085,
+      "orderId": "8154645",
+      "firstName": "Wahl",
+      "lastName": "Leela",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705013,
+      "orderId": "8154659",
+      "firstName": "Oster Ketsios",
+      "lastName": "Leo",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704993,
+      "orderId": "6986128",
+      "firstName": "mcconnell",
+      "lastName": "lilah",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704918,
+      "orderId": "5931072",
+      "firstName": "Garcia",
+      "lastName": "Lily-Rose",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705080,
+      "orderId": "8170607",
+      "firstName": "Thorell",
+      "lastName": "Lorelai",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704942,
+      "orderId": "3520512",
+      "firstName": "Hong",
+      "lastName": "Lucas",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704890,
+      "orderId": "3520494",
+      "firstName": "Curran",
+      "lastName": "Lucy",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704861,
+      "orderId": "3520486",
+      "firstName": "Bray",
+      "lastName": "Madeline",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": true,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705000,
+      "orderId": "6986129",
+      "firstName": "mohandesi",
+      "lastName": "malia",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 2,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704922,
+      "orderId": "3334751",
+      "firstName": "Gomez",
+      "lastName": "Mariana",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705068,
+      "orderId": "3707757",
+      "firstName": "Slater",
+      "lastName": "Mason",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705082,
+      "orderId": "3334806",
+      "firstName": "Tomlin",
+      "lastName": "Matthew",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 3,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704973,
+      "orderId": "6553095",
+      "firstName": "Leaks",
+      "lastName": "Maxwell",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 4,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704929,
+      "orderId": "6986106",
+      "firstName": "Gulati",
+      "lastName": "Maya",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 2,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704979,
+      "orderId": "7787639",
+      "firstName": "Lin",
+      "lastName": "Megan",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705102,
+      "orderId": "6553101",
+      "firstName": "Zhou",
+      "lastName": "Melanie",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705052,
+      "orderId": "7405483",
+      "firstName": "Ponce",
+      "lastName": "Melissa",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704925,
+      "orderId": "3520505",
+      "firstName": "goonetilleke",
+      "lastName": "mia",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705047,
+      "orderId": "3707741",
+      "firstName": "Patzakis",
+      "lastName": "Michael",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Blazed BBQ",
+          "quantity": 1,
+          "price": 3.5
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705073,
+      "orderId": "3404086",
+      "firstName": "Stebbins",
+      "lastName": "Miss",
+      "grade": "Fac/Staff",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 2,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705084,
+      "orderId": "6098228",
+      "firstName": "Tonthat",
+      "lastName": "Momo",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 3,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704901,
+      "orderId": "3520496",
+      "firstName": "Diehl",
+      "lastName": "Naomi",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704964,
+      "orderId": "6986111",
+      "firstName": "Lakoff",
+      "lastName": "Natalia",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705098,
+      "orderId": "3520571",
+      "firstName": "Yagura",
+      "lastName": "Nathan",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704927,
+      "orderId": "6986105",
+      "firstName": "Grossi",
+      "lastName": "Nick",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705093,
+      "orderId": "3520566",
+      "firstName": "Wilson",
+      "lastName": "Nico",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 4,
+          "price": 3
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 2,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814705056,
+      "orderId": "3334794",
+      "firstName": "Posin",
+      "lastName": "Noah",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Wetzel's Original Pretzel",
+          "quantity": 1,
+          "price": 9
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
       "isPoly": false,
       "prepaid": false,
       "venmo": false,
@@ -81,452 +2456,6 @@
       "isAbsent": true
     },
     {
-      "id": 1741814704850,
-      "orderId": "3707664",
-      "firstName": "asperger",
-      "lastName": "kate",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704852,
-      "orderId": "3520480",
-      "firstName": "Barnes",
-      "lastName": "Cashel",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 3,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false,
-      "isPoly": false,
-      "prepaid": false,
-      "venmo": false,
-      "isAbsent": true
-    },
-    {
-      "id": 1741814704854,
-      "orderId": "7827628",
-      "firstName": "Barton",
-      "lastName": "Karen",
-      "grade": "Fac/Staff",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704856,
-      "orderId": "3520483",
-      "firstName": "Bieltvedt",
-      "lastName": "Theo",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 4,
-          "price": 3
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704858,
-      "orderId": "6986100",
-      "firstName": "Blatt",
-      "lastName": "Samson",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704861,
-      "orderId": "3520486",
-      "firstName": "Bray",
-      "lastName": "Madeline",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": true,
-      "isPoly": false,
-      "prepaid": false,
-      "venmo": false,
-      "isAbsent": false
-    },
-    {
-      "id": 1741814704863,
-      "orderId": "5931525",
-      "firstName": "Burt",
-      "lastName": "Clive",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 4,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704866,
-      "orderId": "7405465",
-      "firstName": "Cameron",
-      "lastName": "Kylir",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 3,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704868,
-      "orderId": "7444288",
-      "firstName": "Cardillo",
-      "lastName": "Jen",
-      "grade": "Fac/Staff",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": true,
-      "isPoly": false,
-      "prepaid": false,
-      "venmo": false,
-      "isAbsent": false
-    },
-    {
-      "id": 1741814704870,
-      "orderId": "8154546",
-      "firstName": "Chan",
-      "lastName": "Alister",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 2,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": true,
-      "isPoly": false,
-      "prepaid": false,
-      "venmo": false,
-      "isAbsent": false
-    },
-    {
-      "id": 1741814704872,
-      "orderId": "8154592",
-      "firstName": "Chao",
-      "lastName": "Celine",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704874,
-      "orderId": "7787607",
-      "firstName": "Chen",
-      "lastName": "Dora",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704875,
-      "orderId": "7787608",
-      "firstName": "Chiang-Zanoria",
-      "lastName": "Kyan",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704877,
-      "orderId": "6553099",
-      "firstName": "Chiao",
-      "lastName": "Kaitlyn",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704880,
-      "orderId": "7405475",
-      "firstName": "Cho",
-      "lastName": "August",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704882,
-      "orderId": "7787564",
-      "firstName": "Connolly",
-      "lastName": "Brynn",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704884,
-      "orderId": "7405466",
-      "firstName": "Connolly",
-      "lastName": "William",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704886,
-      "orderId": "6553109",
-      "firstName": "Converse",
-      "lastName": "Sophie",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 3,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704888,
-      "orderId": "7787561",
-      "firstName": "Cundieff",
-      "lastName": "Hadyn",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704890,
-      "orderId": "3520494",
-      "firstName": "Curran",
-      "lastName": "Lucy",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
       "id": 1741814704892,
       "orderId": "7405467",
       "firstName": "Dabiri",
@@ -550,81 +2479,17 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814704894,
-      "orderId": "7827618",
-      "firstName": "Dang",
-      "lastName": "Elsie",
-      "grade": "Fac/Staff",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704896,
-      "orderId": "7405392",
-      "firstName": "Daniel",
-      "lastName": "Sofia",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704899,
-      "orderId": "7787610",
-      "firstName": "Dhadwal",
-      "lastName": "Arjun",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704901,
-      "orderId": "3520496",
-      "firstName": "Diehl",
-      "lastName": "Naomi",
+      "id": 1741814705060,
+      "orderId": "3179412",
+      "firstName": "Rivera-Vásquez",
+      "lastName": "Olivia",
       "grade": "10",
       "items": [
         {
@@ -633,18 +2498,17 @@
           "price": 3.5
         },
         {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
           "name": "Capri Sun",
           "quantity": 1,
           "price": 1
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
       "id": 1741814704902,
@@ -665,1158 +2529,11 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704905,
-      "orderId": "3707685",
-      "firstName": "doyle",
-      "lastName": "harper",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704907,
-      "orderId": "6986103",
-      "firstName": "Durham",
-      "lastName": "Ajani",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 2,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704909,
-      "orderId": "7787615",
-      "firstName": "El-Amin",
-      "lastName": "Sabreen",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704911,
-      "orderId": "6986104",
-      "firstName": "Faraon",
-      "lastName": "Theodor",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 4,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704913,
-      "orderId": "3707690",
-      "firstName": "Felgner",
-      "lastName": "Graydon",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704916,
-      "orderId": "3334742",
-      "firstName": "Flores-Castro",
-      "lastName": "Sofia",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704918,
-      "orderId": "5931072",
-      "firstName": "Garcia",
-      "lastName": "Lily-Rose",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704920,
-      "orderId": "7787624",
-      "firstName": "Golden",
-      "lastName": "Samantha",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704922,
-      "orderId": "3334751",
-      "firstName": "Gomez",
-      "lastName": "Mariana",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704925,
-      "orderId": "3520505",
-      "firstName": "goonetilleke",
-      "lastName": "mia",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704927,
-      "orderId": "6986105",
-      "firstName": "Grossi",
-      "lastName": "Nick",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704929,
-      "orderId": "6986106",
-      "firstName": "Gulati",
-      "lastName": "Maya",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 2,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704932,
-      "orderId": "6553113",
-      "firstName": "Hajimiri",
-      "lastName": "Cavon",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704934,
-      "orderId": "3334757",
-      "firstName": "Henry",
-      "lastName": "Elissa",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704936,
-      "orderId": "6986126",
-      "firstName": "Heredia",
-      "lastName": "Isabella",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 2,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704938,
-      "orderId": "3334760",
-      "firstName": "Hoffman",
-      "lastName": "Ethan",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704940,
-      "orderId": "8154658",
-      "firstName": "Hong",
-      "lastName": "Kelland",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704942,
-      "orderId": "3520512",
-      "firstName": "Hong",
-      "lastName": "Lucas",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704944,
-      "orderId": "6553105",
-      "firstName": "Huang",
-      "lastName": "Elizabeth",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704946,
-      "orderId": "7787630",
-      "firstName": "Hutt",
-      "lastName": "Jujube",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704948,
-      "orderId": "3707711",
-      "firstName": "Joanou",
-      "lastName": "Emmett",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704950,
-      "orderId": "6553107",
-      "firstName": "Johnson",
-      "lastName": "Harper",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704953,
-      "orderId": "5301376",
-      "firstName": "Jospe",
-      "lastName": "Simone",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704955,
-      "orderId": "7787634",
-      "firstName": "Kennedy",
-      "lastName": "Caiden",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 3,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704957,
-      "orderId": "3707716",
-      "firstName": "Kim",
-      "lastName": "Karina",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704959,
-      "orderId": "8154611",
-      "firstName": "Kim",
-      "lastName": "Keira",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704960,
-      "orderId": "6986110",
-      "firstName": "Kim",
-      "lastName": "Ryan",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 3,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704962,
-      "orderId": "3520518",
-      "firstName": "Kwei",
-      "lastName": "Sophie",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704964,
-      "orderId": "6986111",
-      "firstName": "Lakoff",
-      "lastName": "Natalia",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704966,
-      "orderId": "6986124",
-      "firstName": "Landerer",
-      "lastName": "Tilda",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704969,
-      "orderId": "5931081",
-      "firstName": "Lara",
-      "lastName": "Danny",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704970,
-      "orderId": "3520520",
-      "firstName": "Lara",
-      "lastName": "Kalyx",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704973,
-      "orderId": "6553095",
-      "firstName": "Leaks",
-      "lastName": "Maxwell",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 4,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704975,
-      "orderId": "6553096",
-      "firstName": "Lee",
-      "lastName": "Karissa",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704977,
-      "orderId": "6553110",
-      "firstName": "Leichter",
-      "lastName": "Jack",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704979,
-      "orderId": "7787639",
-      "firstName": "Lin",
-      "lastName": "Megan",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704981,
-      "orderId": "7787640",
-      "firstName": "Lin",
-      "lastName": "Ryan",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704983,
-      "orderId": "3707720",
-      "firstName": "Lin",
-      "lastName": "Vanessa",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704985,
-      "orderId": "6553103",
-      "firstName": "Ma",
-      "lastName": "Audrey",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
       "checkedIn": false,
-      "isPoly": true,
+      "isPoly": false,
       "prepaid": false,
-      "venmo": true,
+      "venmo": false,
       "isAbsent": false
-    },
-    {
-      "id": 1741814704987,
-      "orderId": "8154569",
-      "firstName": "Mallinger",
-      "lastName": "Ava",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704989,
-      "orderId": "3707723",
-      "firstName": "Martin",
-      "lastName": "Esa",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704991,
-      "orderId": "3520529",
-      "firstName": "Martin",
-      "lastName": "Sona",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704993,
-      "orderId": "6986128",
-      "firstName": "mcconnell",
-      "lastName": "lilah",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704995,
-      "orderId": "3707729",
-      "firstName": "Miller",
-      "lastName": "Amari",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 3,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814704997,
-      "orderId": "7405480",
-      "firstName": "Modjeski",
-      "lastName": "Jasper",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705000,
-      "orderId": "6986129",
-      "firstName": "mohandesi",
-      "lastName": "malia",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 2,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705002,
-      "orderId": "3707730",
-      "firstName": "Motley",
-      "lastName": "Ashlyn",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705004,
-      "orderId": "8154584",
-      "firstName": "Newhall",
-      "lastName": "Charlotte",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705006,
-      "orderId": "7405481",
-      "firstName": "Nieves",
-      "lastName": "Allison",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705008,
-      "orderId": "6986120",
-      "firstName": "Norheim",
-      "lastName": "Aleah",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705011,
-      "orderId": "7787647",
-      "firstName": "Ohanian",
-      "lastName": "Areni",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705013,
-      "orderId": "8154659",
-      "firstName": "Oster Ketsios",
-      "lastName": "Leo",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
     },
     {
       "id": 1741814705016,
@@ -1847,41 +2564,39 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705018,
-      "orderId": "5931093",
-      "firstName": "Patel",
-      "lastName": "Anya",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705047,
-      "orderId": "3707741",
-      "firstName": "Patzakis",
-      "lastName": "Michael",
+      "id": 1741814704960,
+      "orderId": "6986110",
+      "firstName": "Kim",
+      "lastName": "Ryan",
       "grade": "9",
       "items": [
         {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
+          "name": "Herbivore",
+          "quantity": 3,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704981,
+      "orderId": "7787640",
+      "firstName": "Lin",
+      "lastName": "Ryan",
+      "grade": "10",
+      "items": [
         {
           "name": "Spicy Pepperoni Pizza",
           "quantity": 1,
@@ -1893,26 +2608,55 @@
           "price": 3.5
         },
         {
-          "name": "Herbivore",
+          "name": "Pretzel Bitz",
           "quantity": 1,
-          "price": 3.5
+          "price": 5
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705049,
-      "orderId": "8154624",
-      "firstName": "Perez",
-      "lastName": "Isabel",
-      "grade": "9",
+      "id": 1741814704909,
+      "orderId": "7787615",
+      "firstName": "El-Amin",
+      "lastName": "Sabreen",
+      "grade": "10",
       "items": [
         {
-          "name": "Herbivore",
+          "name": "Pretzel Bitz",
           "quantity": 1,
-          "price": 3.5
+          "price": 5
         },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704920,
+      "orderId": "7787624",
+      "firstName": "Golden",
+      "lastName": "Samantha",
+      "grade": "10",
+      "items": [
         {
           "name": "Hot Dog Bitz",
           "quantity": 1,
@@ -1920,19 +2664,53 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705051,
-      "orderId": "3707743",
-      "firstName": "Pisano",
-      "lastName": "Anna",
+      "id": 1741814704858,
+      "orderId": "6986100",
+      "firstName": "Blatt",
+      "lastName": "Samson",
       "grade": "9",
       "items": [
         {
-          "name": "Blazed BBQ",
-          "quantity": 1,
+          "name": "Spicy Pepperoni Pizza",
+          "quantity": 2,
           "price": 3.5
+        },
+        {
+          "name": "Hot Dog Bitz",
+          "quantity": 1,
+          "price": 6
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704953,
+      "orderId": "5301376",
+      "firstName": "Jospe",
+      "lastName": "Simone",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
         },
         {
           "name": "Pretzel Bitz",
@@ -1946,39 +2724,212 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705052,
-      "orderId": "7405483",
-      "firstName": "Ponce",
-      "lastName": "Melissa",
-      "grade": "11",
+      "id": 1741814704896,
+      "orderId": "7405392",
+      "firstName": "Daniel",
+      "lastName": "Sofia",
+      "grade": "10",
       "items": [
         {
-          "name": "Spicy Pepperoni Pizza",
+          "name": "Cheese Pizza",
           "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
+          "price": 3
         },
         {
           "name": "Wetzel's Original Pretzel",
           "quantity": 1,
           "price": 9
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705054,
-      "orderId": "6986125",
-      "firstName": "Poplock",
-      "lastName": "Lauren",
+      "id": 1741814704916,
+      "orderId": "3334742",
+      "firstName": "Flores-Castro",
+      "lastName": "Sofia",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 2,
+          "price": 3
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704991,
+      "orderId": "3520529",
+      "firstName": "Martin",
+      "lastName": "Sona",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704845,
+      "orderId": "5931057",
+      "firstName": "Ankeles",
+      "lastName": "Sophie",
+      "grade": "11",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 1,
+          "price": 3
+        },
+        {
+          "name": "Herbivore",
+          "quantity": 1,
+          "price": 3.5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": true,
+      "isPoly": true,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704886,
+      "orderId": "6553109",
+      "firstName": "Converse",
+      "lastName": "Sophie",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 3,
+          "price": 3
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704962,
+      "orderId": "3520518",
+      "firstName": "Kwei",
+      "lastName": "Sophie",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Herbivore",
+          "quantity": 2,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704856,
+      "orderId": "3520483",
+      "firstName": "Bieltvedt",
+      "lastName": "Theo",
+      "grade": "10",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "quantity": 4,
+          "price": 3
+        },
+        {
+          "name": "Capri Sun",
+          "quantity": 1,
+          "price": 1
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704911,
+      "orderId": "6986104",
+      "firstName": "Faraon",
+      "lastName": "Theodor",
+      "grade": "9",
+      "items": [
+        {
+          "name": "Blazed BBQ",
+          "quantity": 4,
+          "price": 3.5
+        },
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 1,
+          "price": 5
+        }
+      ],
+      "paymentMethod": "Unpaid",
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
+    },
+    {
+      "id": 1741814704966,
+      "orderId": "6986124",
+      "firstName": "Landerer",
+      "lastName": "Tilda",
       "grade": "9",
       "items": [
         {
@@ -1987,39 +2938,22 @@
           "price": 3
         },
         {
-          "name": "Spicy Pepperoni Pizza",
+          "name": "Pretzel Bitz",
           "quantity": 1,
-          "price": 3.5
+          "price": 5
         },
         {
-          "name": "Blazed BBQ",
+          "name": "Capri Sun",
           "quantity": 1,
-          "price": 3.5
+          "price": 1
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705056,
-      "orderId": "3334794",
-      "firstName": "Posin",
-      "lastName": "Noah",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
       "id": 1741814705058,
@@ -2045,61 +2979,18 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705060,
-      "orderId": "3179412",
-      "firstName": "Rivera-Vásquez",
-      "lastName": "Olivia",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705061,
-      "orderId": "6986114",
-      "firstName": "Rodriguez",
-      "lastName": "Ambrosio",
+      "id": 1741814704983,
+      "orderId": "3707720",
+      "firstName": "Lin",
+      "lastName": "Vanessa",
       "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705063,
-      "orderId": "7405416",
-      "firstName": "Schugren",
-      "lastName": "Jack",
-      "grade": "11",
       "items": [
         {
           "name": "Cheese Pizza",
@@ -2107,81 +2998,37 @@
           "price": 3
         },
         {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
+          "name": "Wetzel's Original Pretzel",
           "quantity": 1,
-          "price": 5
+          "price": 9
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705065,
-      "orderId": "8154635",
-      "firstName": "Shamsi",
-      "lastName": "Amira",
+      "id": 1741814704884,
+      "orderId": "7405466",
+      "firstName": "Connolly",
+      "lastName": "William",
       "grade": "9",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 2,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705067,
-      "orderId": "6553100",
-      "firstName": "Shih",
-      "lastName": "Amelia",
-      "grade": "10",
       "items": [
         {
           "name": "Cheese Pizza",
           "quantity": 2,
           "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705068,
-      "orderId": "3707757",
-      "firstName": "Slater",
-      "lastName": "Mason",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Herbivore",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
       "id": 1741814705070,
@@ -2202,423 +3049,88 @@
         }
       ],
       "paymentMethod": "Unpaid",
-      "checkedIn": false
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false
     },
     {
-      "id": 1741814705073,
-      "orderId": "3404086",
-      "firstName": "Stebbins",
-      "lastName": "Miss",
-      "grade": "Fac/Staff",
-      "items": [
-        {
-          "name": "Herbivore",
-          "quantity": 2,
-          "price": 3.5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705075,
-      "orderId": "6553094",
-      "firstName": "Swanson",
-      "lastName": "Julia",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705076,
-      "orderId": "7405470",
-      "firstName": "Thompson",
-      "lastName": "Finn",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 1,
-          "price": 3
-        },
-        {
-          "name": "Blazed BBQ",
-          "quantity": 1,
-          "price": 3.5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705078,
-      "orderId": "8170600",
-      "firstName": "Thorell",
-      "lastName": "Kaiden",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 3,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705080,
-      "orderId": "8170607",
-      "firstName": "Thorell",
-      "lastName": "Lorelai",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705082,
-      "orderId": "3334806",
-      "firstName": "Tomlin",
-      "lastName": "Matthew",
-      "grade": "11",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 3,
-          "price": 3
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705084,
-      "orderId": "6098228",
-      "firstName": "Tonthat",
-      "lastName": "Momo",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Blazed BBQ",
-          "quantity": 3,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705085,
-      "orderId": "8154645",
-      "firstName": "Wahl",
-      "lastName": "Leela",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Hot Dog Bitz",
-          "quantity": 1,
-          "price": 6
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705087,
-      "orderId": "8154578",
-      "firstName": "Wang",
-      "lastName": "Caralee",
-      "grade": "9",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705089,
-      "orderId": "3520565",
-      "firstName": "Watson",
-      "lastName": "Daniela",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 2,
-          "price": 3
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705091,
-      "orderId": "7787660",
-      "firstName": "Williams",
-      "lastName": "Anara",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705093,
-      "orderId": "3520566",
-      "firstName": "Wilson",
-      "lastName": "Nico",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 4,
-          "price": 3
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 2,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705095,
-      "orderId": "6614650",
-      "firstName": "Wong",
-      "lastName": "Apollo",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Cheese Pizza",
-          "quantity": 4,
-          "price": 3
-        },
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705096,
-      "orderId": "3520567",
-      "firstName": "Woodruff",
-      "lastName": "Edge",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 3,
-          "price": 3.5
-        },
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705098,
-      "orderId": "3520571",
-      "firstName": "Yagura",
-      "lastName": "Nathan",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Spicy Pepperoni Pizza",
-          "quantity": 2,
-          "price": 3.5
-        },
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705100,
-      "orderId": "7787663",
-      "firstName": "Yuan",
-      "lastName": "Jemma",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Wetzel's Original Pretzel",
-          "quantity": 1,
-          "price": 9
-        },
-        {
-          "name": "Capri Sun",
-          "quantity": 1,
-          "price": 1
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814705102,
-      "orderId": "6553101",
-      "firstName": "Zhou",
-      "lastName": "Melanie",
-      "grade": "10",
-      "items": [
-        {
-          "name": "Pretzel Bitz",
-          "quantity": 1,
-          "price": 5
-        }
-      ],
-      "paymentMethod": "Unpaid",
-      "checkedIn": false
-    },
-    {
-      "id": 1741814737674,
+      "id": 1742243589600,
       "orderId": "5931061",
       "firstName": "Evan",
       "lastName": "Chen",
       "grade": "11",
       "items": [
         {
+          "name": "Herbivore",
+          "quantity": 6,
+          "price": 3.5
+        }
+      ],
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false,
+      "paymentMethod": "Unpaid"
+    },
+    {
+      "id": 1742243919512,
+      "orderId": "5931061",
+      "firstName": "Evan",
+      "lastName": "Chen",
+      "grade": "Grade 11",
+      "email": "echen26@students.polytechnic.org",
+      "items": [
+        {
           "name": "Spicy Pepperoni Pizza",
           "quantity": 2,
           "price": 3.5
         }
       ],
-      "checkedIn": true,
-      "isPoly": true,
-      "prepaid": true,
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
       "venmo": false,
-      "paymentMethod": "Poly"
+      "isAbsent": false,
+      "paymentMethod": "Unpaid"
+    },
+    {
+      "id": 1742244097563,
+      "orderId": "5931061",
+      "firstName": "Evan",
+      "lastName": "Chen",
+      "grade": "Grade 11",
+      "email": "echen26@students.polytechnic.org",
+      "items": [
+        {
+          "name": "Pretzel Bitz",
+          "quantity": 4,
+          "price": 5
+        }
+      ],
+      "checkedIn": false,
+      "isPoly": false,
+      "prepaid": false,
+      "venmo": false,
+      "isAbsent": false,
+      "paymentMethod": "Unpaid"
     }
   ],
   "menuItems": [
     {
-      "name": "Cheese Pizza",
-      "price": 3
+      "name": "Cheese Pi",
+      "price": 3,
+      "description": "test",
+      "imageUrlInput": "https://www.recipetineats.com/tachyon/2023/05/Garlic-cheese-pizza_9.jpg?resize=500%2C500",
+      "imageUrl": "https://www.recipetineats.com/tachyon/2023/05/Garlic-cheese-pizza_9.jpg?resize=500%2C500"
     },
     {
       "name": "Spicy Pepperoni Pizza",
-      "price": 3.5
+      "price": 3.5,
+      "imageUrlInput": "https://www.thecookierookie.com/wp-content/uploads/2019/01/soft-pretzel-crust-pizza-cheese-sauce-6-of-8.jpg",
+      "imageUrl": "https://www.thecookierookie.com/wp-content/uploads/2019/01/soft-pretzel-crust-pizza-cheese-sauce-6-of-8.jpg"
     },
     {
       "name": "Blazed BBQ",
@@ -2626,11 +3138,13 @@
     },
     {
       "name": "Herbivore",
-      "price": 3.5
+      "price": 3.5,
+      "imageUrlInput": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
     },
     {
       "name": "Pretzel Bitz",
-      "price": 5
+      "price": 5,
+      "description": "test2"
     },
     {
       "name": "Hot Dog Bitz",

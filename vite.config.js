@@ -27,6 +27,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        studentOrder: fileURLToPath(new URL('./student-order.html', import.meta.url))
+      }
+    }
   }
 })

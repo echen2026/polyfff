@@ -5,8 +5,17 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const fs = require('fs').promises;
 
+// Increase JSON payload size limit for image uploads (50MB)
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../dist')));
+
+// Serve the student order page
+app.get('/student-order', (req, res) => {
+  res.sendFile(path.join(__dirname, 'student-order.html'));
+});
 
 // Serve result.json directly for client-side fallback
 app.get('/result.json', (req, res) => {
@@ -54,6 +63,24 @@ app.get('/api/students/status', (req, res) => {
   });
 });
 
+// API endpoint to handle image uploads
+app.post('/api/upload-image', (req, res) => {
+  try {
+    const { imageData } = req.body;
+    
+    if (!imageData) {
+      return res.status(400).json({ error: 'No image data provided' });
+    }
+    
+    // The image is already base64 encoded in the request
+    // We just need to acknowledge receipt
+    res.json({ success: true, message: 'Image received successfully' });
+  } catch (error) {
+    console.error('Error handling image upload:', error);
+    res.status(500).json({ error: 'Server error processing image' });
+  }
+});
+
 // Handle all routes by serving the index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
@@ -63,7 +90,10 @@ app.get('*', (req, res) => {
 let data = {
   orders: [],
   menuItems: [],
-  students: []
+  students: [],
+  orderFormLocked: false,
+  orderFormTitle: 'Fun Food Friday Order Form',
+  orderFormDescription: 'Place your order for Fun Food Friday. Please fill out all fields.'
 };
 
 // Load data from files
@@ -189,6 +219,30 @@ io.on('connection', (socket) => {
     data.menuItems = menuItems;
     saveDataToFiles();
     io.emit('menuUpdated', menuItems);
+  });
+
+  // Handle order form lock updates
+  socket.on('orderFormLockUpdated', (locked) => {
+    console.log('Order form lock status updated:', locked);
+    data.orderFormLocked = locked;
+    // Broadcast to all other clients
+    socket.broadcast.emit('orderFormLockUpdated', locked);
+  });
+
+  // Handle order form settings updates
+  socket.on('orderFormSettingsUpdated', (settings) => {
+    console.log('Order form settings updated:', settings);
+    if (settings.title !== undefined) {
+      data.orderFormTitle = settings.title;
+    }
+    if (settings.description !== undefined) {
+      data.orderFormDescription = settings.description;
+    }
+    // Broadcast to all other clients
+    socket.broadcast.emit('orderFormSettingsUpdated', {
+      title: data.orderFormTitle,
+      description: data.orderFormDescription
+    });
   });
 
   socket.on('disconnect', () => {

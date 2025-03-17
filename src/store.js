@@ -16,6 +16,9 @@ const store = reactive({
   students: [],
   menuItems: [],
   isConnected: false,
+  orderFormLocked: false,
+  orderFormTitle: 'Fun Food Friday Order Form',
+  orderFormDescription: 'Place your order for Fun Food Friday. Please fill out all fields.',
 
   async loadData() {
     // First load whatever is in localStorage
@@ -65,6 +68,23 @@ const store = reactive({
         this.orders = [];
       }
       this.menuItems = serverData.menuItems || [];
+      
+      // Load order form lock status
+      const orderFormLockStatus = localStorage.getItem('orderFormLocked');
+      if (orderFormLockStatus !== null) {
+        this.orderFormLocked = JSON.parse(orderFormLockStatus);
+      }
+      
+      // Load order form customization settings
+      const orderFormTitle = localStorage.getItem('orderFormTitle');
+      if (orderFormTitle) {
+        this.orderFormTitle = orderFormTitle;
+      }
+      
+      const orderFormDescription = localStorage.getItem('orderFormDescription');
+      if (orderFormDescription) {
+        this.orderFormDescription = orderFormDescription;
+      }
       
       // Save to localStorage for offline use
       this.saveToLocalStorage();
@@ -128,6 +148,8 @@ const store = reactive({
     try {
       localStorage.setItem('orders', JSON.stringify(this.orders));
       localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
+      localStorage.setItem('orderFormTitle', this.orderFormTitle);
+      localStorage.setItem('orderFormDescription', this.orderFormDescription);
       
       // Only save students to localStorage if we have them
       if (Array.isArray(this.students) && this.students.length > 0) {
@@ -177,6 +199,27 @@ const store = reactive({
     socket.emit('menuUpdated', menuItems);
   },
 
+  async uploadImage(imageData) {
+    try {
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ imageData })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to upload image: ${response.status}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
+  },
+
   toggleOrderProperty(orderId, property) {
     const orderIndex = this.orders.findIndex(o => o.id === orderId);
     if (orderIndex !== -1) {
@@ -211,6 +254,9 @@ const store = reactive({
     // Save to localStorage as before.
     this.saveToLocalStorage();
     
+    // Save order form lock status
+    localStorage.setItem('orderFormLocked', JSON.stringify(this.orderFormLocked));
+    
     // Log the size of the data being sent
     const payload = {
       orders: this.orders,
@@ -244,6 +290,28 @@ const store = reactive({
     if (order.venmo === undefined) order.venmo = false;
     if (order.isAbsent === undefined) order.isAbsent = false;
     return order;
+  },
+
+  toggleOrderFormLock(locked) {
+    this.orderFormLocked = locked;
+    this.saveData();
+    // Emit event for real-time updates
+    socket.emit('orderFormLockUpdated', locked);
+  },
+
+  updateOrderFormSettings(settings) {
+    if (settings.title !== undefined) {
+      this.orderFormTitle = settings.title;
+    }
+    if (settings.description !== undefined) {
+      this.orderFormDescription = settings.description;
+    }
+    this.saveToLocalStorage();
+    // Emit event for real-time updates
+    socket.emit('orderFormSettingsUpdated', {
+      title: this.orderFormTitle,
+      description: this.orderFormDescription
+    });
   }
 });
 
@@ -323,6 +391,23 @@ socket.on('menuUpdated', (menuItems) => {
   console.log('Received menu update');
   store.menuItems = menuItems;
   store.saveToLocalStorage();
+});
+
+// Listen for order form lock updates
+socket.on('orderFormLockUpdated', (locked) => {
+  store.orderFormLocked = locked;
+  emitter.emit('orderFormLockUpdated', locked);
+});
+
+// Listen for order form settings updates
+socket.on('orderFormSettingsUpdated', (settings) => {
+  if (settings.title !== undefined) {
+    store.orderFormTitle = settings.title;
+  }
+  if (settings.description !== undefined) {
+    store.orderFormDescription = settings.description;
+  }
+  emitter.emit('orderFormSettingsUpdated', settings);
 });
 
 // Event bus listeners

@@ -13,12 +13,146 @@
     <div class="section">
       <h3>Manage Menu Items</h3>
       <div v-for="(item, index) in menuItems" :key="index" class="menu-item">
-        <input v-model="item.name" placeholder="Item name" />
-        <input v-model.number="item.price" type="number" step="0.01" placeholder="Price" />
-        <button @click="removeMenuItem(index)" class="remove-button">Remove</button>
+        <div class="menu-item-header">
+          <div class="menu-item-inputs">
+            <input v-model="item.name" placeholder="Item name" class="menu-item-name" />
+            <input v-model.number="item.price" type="number" step="0.01" placeholder="Price" class="menu-item-price" />
+          </div>
+          <div class="menu-item-actions">
+            <button @click="toggleItemExpanded(index)" class="toggle-button">
+              {{ isItemExpanded(index) ? 'Hide Details' : 'Show Details' }}
+            </button>
+            <button @click="removeMenuItem(index)" class="remove-button">Remove</button>
+          </div>
+        </div>
+        
+        <div v-if="isItemExpanded(index)" class="menu-item-details">
+          <label for="item-description">Item Description:</label>
+          <textarea 
+            :id="'item-description-' + index"
+            v-model="item.description" 
+            placeholder="Enter item description (optional)"
+            class="form-control item-description"
+            rows="2"
+          ></textarea>
+          <p class="help-text">This description will be shown to students when they view the item details.</p>
+          
+          <div class="image-upload-section">
+            <label for="item-image">Item Image:</label>
+            <div class="image-preview-container">
+              <img 
+                v-if="item.imageUrl" 
+                :src="item.imageUrl" 
+                class="image-preview" 
+                alt="Menu item preview"
+              />
+              <div v-else-if="item.imageLoading" class="image-loading">
+                Uploading image...
+              </div>
+              <div v-else class="no-image">No image uploaded</div>
+            </div>
+            <div class="image-url-input">
+              <label for="item-image-url">Image URL:</label>
+              <input 
+                type="text" 
+                :id="'item-image-url-' + index" 
+                v-model="item.imageUrlInput" 
+                placeholder="Enter direct image URL" 
+                class="form-control"
+              />
+              <div class="url-buttons">
+                <button 
+                  @click="testImageUrl(index)" 
+                  class="test-url-button"
+                  :disabled="testingImageUrl === index"
+                >
+                  {{ testingImageUrl === index ? 'Testing...' : 'Test URL' }}
+                </button>
+                <button @click="applyImageUrl(index)" class="apply-url-button">
+                  Apply URL
+                </button>
+                <button @click="useSampleImageUrl(index)" class="sample-url-button">
+                  Use Sample URL
+                </button>
+              </div>
+            </div>
+            <p class="help-text">Enter a direct URL to an image, or upload one below.</p>
+            <div class="image-upload-controls">
+              <input 
+                type="file" 
+                :id="'item-image-' + index" 
+                @change="(e) => handleImageUpload(e, index)" 
+                accept="image/*"
+                class="image-input"
+              />
+              <button @click="triggerImageUpload(index)" class="upload-button">
+                {{ item.imageUrl ? 'Change Image' : 'Upload Image' }}
+              </button>
+              <button 
+                v-if="item.imageUrl" 
+                @click="removeImage(index)" 
+                class="remove-image-button"
+              >
+                Remove Image
+              </button>
+            </div>
+            <p class="help-text">Upload an image to display with this menu item. Recommended size: 300x200px.</p>
+          </div>
+        </div>
       </div>
       <button @click="addMenuItem" class="add-button">Add Menu Item</button>
       <button @click="saveMenuItems" class="save-button">Save Menu</button>
+    </div>
+    
+    <div class="section">
+      <h3>Student Order Form</h3>
+      
+      <div class="form-customization">
+        <h4>Form Customization</h4>
+        <div class="form-group">
+          <label for="form-title">Form Title:</label>
+          <input 
+            id="form-title" 
+            v-model="formSettings.title" 
+            placeholder="Enter form title" 
+            class="form-control"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="form-description">Form Description:</label>
+          <textarea 
+            id="form-description" 
+            v-model="formSettings.description" 
+            placeholder="Enter form description" 
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+        
+        <button @click="saveFormSettings" class="save-button">Save Form Settings</button>
+      </div>
+      
+      <div class="order-form-controls">
+        <div class="status-display">
+          <span class="status-label">Status:</span>
+          <span class="status-value" :class="{ 'status-open': !orderFormLocked, 'status-closed': orderFormLocked }">
+            {{ orderFormLocked ? 'Closed' : 'Open' }}
+          </span>
+        </div>
+        <button 
+          @click="toggleOrderForm" 
+          :class="{ 'lock-button': !orderFormLocked, 'unlock-button': orderFormLocked }"
+        >
+          {{ orderFormLocked ? 'Open Orders' : 'Close Orders' }}
+        </button>
+      </div>
+      <p class="help-text">
+        {{ orderFormLocked ? 
+          'The student order form is currently closed. Students cannot place new orders.' : 
+          'The student order form is currently open. Students can place new orders.' 
+        }}
+      </p>
     </div>
     
     <!-- Diagnostic Section -->
@@ -53,7 +187,13 @@ import store from '../store';
 export default {
   data() {
     return {
-      diagnosticResult: null
+      diagnosticResult: null,
+      formSettings: {
+        title: '',
+        description: ''
+      },
+      expandedItems: [],
+      testingImageUrl: null
     };
   },
   computed: {
@@ -68,6 +208,14 @@ export default {
     },
     studentCount() {
       return Array.isArray(store.students) ? store.students.length : 0;
+    },
+    orderFormLocked: {
+      get() {
+        return store.orderFormLocked;
+      },
+      set(value) {
+        store.toggleOrderFormLock(value);
+      }
     }
   },
   mounted() {
@@ -75,6 +223,11 @@ export default {
     if (savedItems) {
       store.menuItems = JSON.parse(savedItems);
     }
+    
+    // Load form settings
+    this.formSettings.title = store.orderFormTitle;
+    this.formSettings.description = store.orderFormDescription;
+    
     store.loadData().then(() => {
       console.log('Students loaded:', store.students);
     });
@@ -345,7 +498,15 @@ export default {
       }
     },
     addMenuItem() {
-      this.menuItems.push({ name: '', price: 0 });
+      this.menuItems.push({ 
+        name: '', 
+        price: 0, 
+        description: '',
+        imageUrl: null,
+        imageUrlInput: '' 
+      });
+      // Automatically expand the newly added item
+      this.expandedItems.push(this.menuItems.length - 1);
     },
     removeMenuItem(index) {
       this.menuItems.splice(index, 1);
@@ -409,10 +570,34 @@ export default {
     // Add default menu items
     addDefaultMenuItems() {
       const defaultItems = [
-        { name: 'Sandwich', price: 5.00 },
-        { name: 'Drink', price: 2.00 },
-        { name: 'Chips', price: 1.50 },
-        { name: 'Cookie', price: 1.00 }
+        { 
+          name: 'Sandwich', 
+          price: 5.00,
+          description: 'Fresh sandwich with your choice of fillings.',
+          imageUrl: null,
+          imageUrlInput: ''
+        },
+        { 
+          name: 'Drink', 
+          price: 2.00,
+          description: 'Refreshing beverage options including water, juice, and soda.',
+          imageUrl: null,
+          imageUrlInput: ''
+        },
+        { 
+          name: 'Chips', 
+          price: 1.50,
+          description: 'Crispy potato chips in various flavors.',
+          imageUrl: null,
+          imageUrlInput: ''
+        },
+        { 
+          name: 'Cookie', 
+          price: 1.00,
+          description: 'Freshly baked chocolate chip cookie.',
+          imageUrl: null,
+          imageUrlInput: ''
+        }
       ];
       
       // Add the default items to the menu
@@ -553,6 +738,160 @@ export default {
       if (result.grade === undefined) result.grade = 4;         // Default grade column
       
       return result;
+    },
+    toggleOrderForm() {
+      console.log('Toggle order form clicked. Current state:', this.orderFormLocked);
+      store.toggleOrderFormLock(!this.orderFormLocked);
+      console.log('New state should be:', !this.orderFormLocked);
+    },
+    saveFormSettings() {
+      // Save form settings to the store
+      store.updateOrderFormSettings({
+        title: this.formSettings.title,
+        description: this.formSettings.description
+      });
+      
+      // Show a confirmation message
+      alert('Form settings saved successfully!');
+    },
+    toggleItemExpanded(index) {
+      const itemIndex = this.expandedItems.indexOf(index);
+      if (itemIndex === -1) {
+        // Item is not expanded, so expand it
+        this.expandedItems.push(index);
+      } else {
+        // Item is expanded, so collapse it
+        this.expandedItems.splice(itemIndex, 1);
+      }
+    },
+    isItemExpanded(index) {
+      return this.expandedItems.includes(index);
+    },
+    async handleImageUpload(event, index) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      // Show loading state
+      this.menuItems[index].imageLoading = true;
+      
+      try {
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+          const imageData = e.target.result;
+          
+          // Upload the image to the server
+          try {
+            await store.uploadImage(imageData);
+            // On success, update the menu item
+            this.menuItems[index].imageUrl = imageData;
+            this.saveMenuItems(); // Save the updated menu items
+          } catch (error) {
+            alert('Failed to upload image. Please try again.');
+            console.error('Image upload failed:', error);
+          } finally {
+            // Clear loading state
+            this.menuItems[index].imageLoading = false;
+          }
+        };
+        reader.readAsDataURL(file);
+      } catch (error) {
+        alert('Error processing image. Please try a different image.');
+        console.error('Error processing image:', error);
+        this.menuItems[index].imageLoading = false;
+      }
+    },
+    triggerImageUpload(index) {
+      const fileInput = document.getElementById(`item-image-${index}`);
+      if (fileInput) {
+        fileInput.click();
+      }
+    },
+    removeImage(index) {
+      this.menuItems[index].imageUrl = null;
+      this.saveMenuItems(); // Save the updated menu items
+    },
+    applyImageUrl(index) {
+      const url = this.menuItems[index].imageUrlInput.trim();
+      if (url) {
+        // Check if the URL is valid
+        if (this.isValidImageUrl(url)) {
+          this.menuItems[index].imageUrl = url;
+          this.saveMenuItems();
+          alert('Image URL applied successfully!');
+        } else {
+          alert('Please enter a valid image URL. URLs should start with http:// or https:// and end with an image extension like .jpg, .png, .gif, etc.');
+        }
+      } else {
+        alert('Please enter an image URL.');
+      }
+    },
+    isValidImageUrl(url) {
+      // Basic URL validation
+      if (!url.match(/^https?:\/\//)) {
+        return false;
+      }
+      
+      // Check if it's likely an image URL (ends with common image extensions)
+      // This is a simple check and might not catch all valid image URLs
+      return url.match(/\.(jpeg|jpg|gif|png|webp|svg)(\?.*)?$/i) !== null || 
+             // Also allow data URLs for base64 encoded images
+             url.startsWith('data:image/');
+    },
+    testImageUrl(index) {
+      const url = this.menuItems[index].imageUrlInput.trim();
+      if (!url) {
+        alert('Please enter an image URL.');
+        return;
+      }
+      
+      // Check if the URL is valid
+      if (!this.isValidImageUrl(url)) {
+        alert('Image URL is not valid. Please enter a valid image URL.');
+        return;
+      }
+      
+      // Set loading state
+      this.testingImageUrl = index;
+      
+      // Try to load the image
+      const img = new Image();
+      img.onload = () => {
+        alert('Image loaded successfully! The URL is valid.');
+        this.testingImageUrl = null;
+      };
+      img.onerror = () => {
+        alert('Failed to load the image. The URL might be invalid or the image might not be accessible.');
+        this.testingImageUrl = null;
+      };
+      img.src = url;
+    },
+    useSampleImageUrl(index) {
+      // Sample image URLs for different food items
+      const sampleUrls = {
+        'Sandwich': 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Drink': 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Chips': 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Cookie': 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Pizza': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Salad': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Fruit': 'https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+        'Dessert': 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
+      };
+      
+      // Get the item name
+      const itemName = this.menuItems[index].name.trim();
+      
+      // Find a matching sample URL or use a default
+      let sampleUrl = '';
+      if (itemName && sampleUrls[itemName]) {
+        sampleUrl = sampleUrls[itemName];
+      } else {
+        // Use a generic food image if no match
+        sampleUrl = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80';
+      }
+      
+      // Set the URL input
+      this.menuItems[index].imageUrlInput = sampleUrl;
     }
   }
 };
@@ -852,6 +1191,399 @@ function findItemColumns(rows) {
   margin-top: 5px;
   font-size: 0.8em;
   color: #666;
+}
+
+.order-form-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.status-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-label {
+  font-weight: bold;
+}
+
+.status-value {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.status-open {
+  background-color: #d1fae5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.status-closed {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.lock-button, .unlock-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.lock-button {
+  background-color: #e5f2ff;
+  border-color: #99ccff;
+  color: #0066cc;
+}
+
+.unlock-button {
+  background-color: #ffebeb;
+  border-color: #ffb3b3;
+  color: #cc0000;
+}
+
+.lock-button:hover {
+  background-color: #cce5ff;
+  border-color: #66b3ff;
+}
+
+.unlock-button:hover {
+  background-color: #ffd6d6;
+  border-color: #ff8080;
+}
+
+.lock-button:focus, .unlock-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.lock-button:active, .unlock-button:active {
+  transform: translateY(1px);
+}
+
+.form-customization {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.form-customization h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #374151;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.save-button {
+  background-color: #3B82F6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-button:hover {
+  background-color: #2563EB;
+}
+
+.save-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+
+.menu-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-item-inputs {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.menu-item-name {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.menu-item-price {
+  width: 100px;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.menu-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-button {
+  background-color: #E5E7EB;
+  border: 1px solid #D1D5DB;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-button:hover {
+  background-color: #D1D5DB;
+}
+
+.remove-button {
+  background-color: #FEE2E2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-button:hover {
+  background-color: #FECACA;
+}
+
+.menu-item-details {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.item-description {
+  margin-top: 5px;
+}
+
+.add-button {
+  background-color: #D1FAE5;
+  border: 1px solid #A7F3D0;
+  color: #047857;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s;
+}
+
+.add-button:hover {
+  background-color: #A7F3D0;
+}
+
+.image-upload-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.image-preview-container {
+  margin-bottom: 10px;
+}
+
+.image-preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.no-image {
+  padding: 10px;
+  text-align: center;
+  color: #666;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+}
+
+.image-loading {
+  padding: 10px;
+  text-align: center;
+  color: #3B82F6;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.image-upload-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.image-input {
+  display: none;
+}
+
+.upload-button {
+  background-color: #E5E7EB;
+  border: 1px solid #D1D5DB;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #D1D5DB;
+}
+
+.remove-image-button {
+  background-color: #FEE2E2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-image-button:hover {
+  background-color: #FECACA;
+}
+
+.image-url-input {
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+}
+
+.image-url-input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #0369a1;
+}
+
+.image-url-input input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+}
+
+.url-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.test-url-button, .sample-url-button {
+  flex: 1;
+  min-width: 100px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #E5E7EB;
+  border: 1px solid #D1D5DB;
+}
+
+.test-url-button:hover, .sample-url-button:hover {
+  background-color: #D1D5DB;
+}
+
+.test-url-button:disabled {
+  background-color: #F3F4F6;
+  color: #9CA3AF;
+  cursor: not-allowed;
+  border-color: #E5E7EB;
+  opacity: 0.7;
+}
+
+.apply-url-button {
+  flex: 1;
+  min-width: 100px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  font-weight: 500;
+}
+
+.apply-url-button:hover {
+  background-color: #0284c7;
 }
 </style>
 
